@@ -1,0 +1,10 @@
+.gambar {
+  width: 100px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+.table > tbody > tr > * {
+  vertical-align: middle;
+}
