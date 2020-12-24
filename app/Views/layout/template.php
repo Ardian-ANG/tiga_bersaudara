@@ -201,7 +201,7 @@
                             var selectedCountry = $(this).children("option:selected").val();
                             if (selectedCountry == 'custom') {
                                 // alert("You have selected the country - " + selectedCountry);
-                                $("div.ukuran").append(" <input type='email' class='form-control mb-1' id='exampleFormControlInput1' placeholder='P (cm)'><input type='email' class='form-control' id='exampleFormControlInput1' placeholder='L (cm)'>");
+                                $("div.ukuran").append(" <input type='text' name='ukuran1' class='form-control mb-1' id='exampleFormControlInput1' placeholder='P (cm)'><input type='text' name='ukuran2' class='form-control' id='exampleFormControlInput1' placeholder='L (cm)'>");
                             } else {
                                 $("div.ukuran").empty();
                             }

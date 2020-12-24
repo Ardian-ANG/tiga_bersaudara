@@ -6,27 +6,27 @@
         <div class="card">
             <h2 class="my-3 ml-4">Form Ubah Data Pesanan</h2>
 
-            <form action="/pemesanan/update/ <?= $produk['id_produk']; ?>" method="post">
+            <form action="/pemesanan/update/<?= $pemesanan['id']; ?>" method="post">
                 <?= csrf_field(); ?>
                 <div class="form-group row">
-                    <label for="pemesanan" class="col-sm-2 ml-4 col-form-label">Pemesanan</label>
+                    <label for="id" class="col-sm-2 ml-4 col-form-label">Pemesanan</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control <?= ($validation->hasError('pemesanan')) ? 'is-invalid' : ''; ?>" id="pemesanan" name="pemesanan" autofocus value="<?= (old('pemesanan')) ? old('pemesanan') : $produk['pemesanan'] ?>">
+                        <input type="text" class="form-control <?= ($validation->hasError('id')) ? 'is-invalid' : ''; ?>" id="id" name="id" autofocus value="<?= (old('id')) ? old('id') : $pemesanan['id'] ?>">
                         <div class="invalid-feedback">
-                            <?= $validation->getError('pemesanan'); ?>
+                            <?= $validation->getError('id'); ?>
                         </div>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="pembayaran" class="col-sm-2 ml-4 col-form-label">Pembayaran</label>
-                    <div class="col-sm-9">
-                        <input type="text" class="form-control" id="pembayaran" name="pembayaran" value="<?= (old('pembayaran')) ? old('pembayaran') : $produk['pembayaran'] ?>">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="status_pemesanan" class="col-sm-2 ml-4 col-form-label">Status Pemesanan</label>
                     <div class="col-sm-9">
-                        <input type="int" class="form-control <?= ($validation->hasError('status_pemesanan')) ? 'is-invalid' : ''; ?>" id="status_pemesanan" name="status_pemesanan" value="<?= (old('status_pemesanan')) ? old('status_pemesanan') : $produk['status_pemesanan'] ?>">
+                        <!-- <input type="int" class="form-control <?= ($validation->hasError('status_pemesanan')) ? 'is-invalid' : ''; ?>" id="status_pemesanan" name="status_pemesanan" value="<?= (old('status_pemesanan')) ? old('status_pemesanan') : $pemesanan['status_pemesanan'] ?>"> -->
+                        <select class="custom-select <?= ($validation->hasError('status_pemesanan')) ? 'is-invalid' : ''; ?>" id="status_pemesanan" name="status_pemesanan">
+                            <option selected  value="<?= (old('status_pemesanan')) ? old('status_pemesanan') : $pemesanan['status_pemesanan'] ?>"> <?= $pemesanan['status_pemesanan'] ?></option>
+                            <option value="Dalam Antrian">Dalam Antrian</option>
+                            <option value="Sedang Dikerjakan">Sedang Dikerjakan</option>
+                            <option value="Sudah Selesai">Sudah Selesai</option>
+                        </select>
                         <div class="invalid-feedback">
                             <?= $validation->getError('status_pemesanan'); ?>
                         </div>
@@ -35,27 +35,14 @@
                 <div class="form-group row">
                     <label for="status_pembayaran" class="col-sm-2 ml-4 col-form-label">Status Pembayaran</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control <?= ($validation->hasError('status_pembayaran')) ? 'is-invalid' : ''; ?>" id="status_pembayaran" name="status_pembayaran" value="<?= (old('status_pembayaran')) ? old('status_pembayaran') : $produk['status_pembayaran'] ?>">
+                        <!-- <input type="text" class="form-control <?= ($validation->hasError('status_pembayaran')) ? 'is-invalid' : ''; ?>" id="status_pembayaran" name="status_pembayaran" value="<?= (old('status_pembayaran')) ? old('status_pembayaran') : $pemesanan['status_pembayaran'] ?>"> -->
+                        <select class="custom-select <?= ($validation->hasError('status_pembayaran')) ? 'is-invalid' : ''; ?>" id="status_pembayaran" name="status_pembayaran">
+                        <option selected  value="<?= (old('status_pembayaran')) ? old('status_pembayaran') : $pemesanan['status_pembayaran'] ?>"><?= $pemesanan['status_pembayaran'] ?></option>
+                            <option value="Belum Dibayar">Belum Dibayar</option>
+                            <option value="Sudah Dibayar">Sudah Dibayar</option>
+                            </select>
                         <div class="invalid-feedback">
                             <?= $validation->getError('status_pembayaran'); ?>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="bukti_pembayaran" class="col-sm-2 ml-4 col-form-label">Bukti Pembayaran</label>
-                    <div class="col-sm-9">
-                        <input type="text" class="form-control <?= ($validation->hasError('bukti_pembayaran')) ? 'is-invalid' : ''; ?>" id="bukti_pembayaran" name="bukti_pembayaran" value="<?= (old('bukti_pembayaran')) ? old('bukti_pembayaran') : $produk['bukti_pembayaran'] ?>">
-                        <div class="invalid-feedback">
-                            <?= $validation->getError('bukti_pembayaran'); ?>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="tgl" class="col-sm-2 ml-4 col-form-label">Tanggal</label>
-                    <div class="col-sm-9">
-                        <input type="text" class="form-control <?= ($validation->hasError('tgl')) ? 'is-invalid' : ''; ?>" id="tgl" name="tgl" value="<?= (old('tgl')) ? old('tgl') : $produk['tgl'] ?>">
-                        <div class="invalid-feedback">
-                            <?= $validation->getError('tgl'); ?>
                         </div>
                     </div>
                 </div>

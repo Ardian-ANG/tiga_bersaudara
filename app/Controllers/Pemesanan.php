@@ -30,74 +30,64 @@ class Pemesanan extends BaseController
         return view('admin/pemesanan', $data);
     }
 
-    public function delete($id_produk)
+    public function delete($id)
     {
-        $this->Produk->delete($id_produk);
+        $this->Pemesanan->delete($id);
         session()->setflashdata('pesan', 'Produk berhasil dihapus.');
         return redirect()->to('/pemesanan');
     }
 
-    public function edit($id_produk)
+    public function edit($id)
     {
 
         $data = [
             'title' => 'Form Ubah Data Pesanan',
             'validation' => \Config\Services::validation(),
-            'produk' => $this->Produk->getProduk($id_produk)
+            'pemesanan' => $this->Pemesanan->find($id)
         ];
         return view('admin/ubah_pemesanan', $data);
     }
 
-    public function update($id_produk)
+    public function update($id)
     {
         if (!$this->validate([
-            'nama_produk' => [
-                'rules' => 'required[produk.nama_produk]',
+            'status_pemesanan' => [
+                'rules' => 'required[pemesanan.status_pemesanan]',
                 'errors' => [
-                    'required' => 'produk harus diisi.',
+                    'required' => 'harus diisi.',
 
                 ]
             ],
-            'id_kategori' => [
-                'rules' => 'required[produk.id_kategori]',
+            'status_pembayaran' => [
+                'rules' => 'required[pemesanan.status_pembayaran]',
                 'errors' => [
-                    'required' => 'kategori harus dipilih.'
+                    'required' => 'harus dipilih.'
                 ]
-            ],
-            'harga' => [
-                'rules' => 'required[produk.harga]',
-                'errors' => [
-                    'required' => 'harga harus diisi.'
-                ]
-            ],
-            'keterangan' => [
-                'rules' => 'required[produk.keterangan]',
-                'errors' => [
-                    'required' => 'keterangan harus diisi.'
-                ]
-            ],
-            'estimasi_waktu' => [
-                'rules' => 'required[produk.estimasi_waktu]',
-                'errors' => [
-                    'required' => 'waktu harus diisi.'
-                ]
-            ],
+            ]
 
         ])) {
             $validation = \Config\Services::validation();
-            return redirect()->to('/pemesanan/edit/' . $id_produk)->withInput()->with('validation', $validation);
+            return redirect()->to('/pemesanan/edit/' . $id)->withInput()->with('validation', $validation);
         }
 
-        $this->Produk->save([
-            'id_produk' => $id_produk,
-            'nama_produk' => $this->request->getVar('nama_produk'),
-            'id_kategori' => $this->request->getVar('id_kategori'),
-            'gambar' => $this->request->getVar('gambar'),
-            'harga' => $this->request->getVar('harga'),
-            'keterangan' => $this->request->getVar('keterangan'),
-            'estimasi_waktu' => $this->request->getVar('estimasi_waktu')
-        ]);
-        session()->setflashdata('pesan', 'Produk berhasil diubah.');
+        $db      = \Config\Database::connect();
+        $builder = $db->table('Pemesanan');
+        // $query   = $builder->get();
+        // dd($query->getResult());
+
+        // $builder->set('name', $name);
+        // $builder->set('title', $title);
+        // $builder->set('status', $status);
+        // $builder->insert();
+        $data = [
+            'status_pemesanan' => $this->request->getVar('status_pemesanan'),
+            'status_pembayaran' => $this->request->getVar('status_pembayaran')
+        ];
+        $builder->set($data);
+        $builder->where('id', $id);
+        $builder->update();
+        // $this->Produk->save($data);
+        session()->setflashdata('pesan', 'Pemesanan berhasil diubah.');
 
 
         return redirect()->to('/pemesanan');

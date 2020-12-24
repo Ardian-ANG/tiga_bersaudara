@@ -38,12 +38,13 @@
                                     <td><?= $p['bukti_pembayaran']; ?></td>
                                     <td><?= $p['tgl']; ?></td>
                                     <td class="text-center">
-                                        <a href="" class="btn btn-warning">Update</a>
-                                        <form action="" method="post" class="d-inline">
+                                        <a href="/pemesanan/edit/<?= $p['id'] ?>" class="btn btn-sm mb-1 mr-1 btn-warning">Update</a>
+                                        <a href="/pemesanan/delete/<?= $p['id'] ?>" onclick="return confirm('apakah anda yakin?')" class="btn btn-sm mb-1 mr-1 btn-danger">delete</a>
+                                        <!-- <form action="" method="post" class="d-inline">
                                             <?= csrf_field(); ?>
                                             <input type="hidden" name="_method" value="DELETE">
-                                            <button type="submit" class="btn btn-danger" onclick="return confirm('apakah anda yakin?')">Delete</button>
-                                        </form>
+                                            <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('apakah anda yakin?')">Delete</button>
+                                        </form> -->
                                     </td>
                                 </tr>
                             <?php endforeach; ?>

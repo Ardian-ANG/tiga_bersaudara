@@ -62,7 +62,7 @@
                         <div class="form-group col-5">
                             <select class="form-control ukuran" id="exampleFormControlSelect1" name="ukuran">
                                 <?php foreach ($ukuran as $p) : ?>
-                                    <option value="<?= $p['id']; ?>"><?= $p['ukuran']; ?></option>
+                                    <option value="<?= $p['ukuran']; ?>"><?= $p['ukuran']; ?></option>
                                 <?php endforeach ?>
                                 <option value="custom">custom</option>
                             </select></div>

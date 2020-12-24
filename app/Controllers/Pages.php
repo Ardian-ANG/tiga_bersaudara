@@ -13,12 +13,14 @@ class Pages extends BaseController
     protected $Produk;
     protected $Kategori;
     protected $Pemesanan;
+    protected $Ukuran;
 
     public function __construct()
     {
         $this->Produk = new ProdukModel();
         $this->Kategori = new KategoriModel();
         $this->Pemesanan = new PemesananModel();
+        $this->Ukuran = new Ukuran();
     }
 
 
@@ -112,23 +114,40 @@ class Pages extends BaseController
     }
     public function shopNow()
     {
-        $data = [
-            'title' => 'pesan'
-        ];
-        // dd($this->request->getVar());
 
+        $ukuran = $this->request->getVar('ukuran');
+        $harga = "";
+        if ($ukuran == "custom") {
+            $ukuran1 = $this->request->getVar('ukuran1');
+            $ukuran2 = $this->request->getVar('ukuran2');
+            $acak = $ukuran1 . " x " . $ukuran2;
+            $ukuran = $acak;
+
+            $c = explode(" ", $ukuran);
+            $c = implode(" ", array($c[2], $c[1], $c[0]));
+            $c = $this->Ukuran->where('ukuran', $c)->find();
+
+            $harga = $c[0]['harga'];
+            // dd($harga, $ukuran);
+        }else{
+            $ukuran = $ukuran;
+            $c = $this->Ukuran->where('ukuran', $ukuran)->find();
+            
+            $harga = $c[0]['harga'];
+            // dd($harga, $ukuran);
+        }
+        
         $pemesanan = [
             'id_user' => 1,
             'id_produk' => $this->request->getVar('id_produk'),
             'desain' => $this->request->getVar('desain'),
-            'ket_pemesanan' => $this->request->getVar('ukuran') . ' ' . $this->request->getVar('deskripsi'),
+            'ket_pemesanan' => $ukuran . '/' . $harga . ' * '. $this->request->getVar('jumlah') . ' (jumlah) = ' . $harga * $this->request->getVar('jumlah') . $this->request->getVar('deskripsi'),
             'pembayaran' => $this->request->getVar('pembayaran'),
             'status_pemesanan' => 'cart',
             'status_pembayaran' => 'belum dibayar',
             'bukti_pembayaran' => '',
             'tgl' => date("Y/m/d")
         ];
-
         $this->Pemesanan->save($pemesanan);
         return redirect()->to('/pages/produk/' .  $this->request->getVar('id_produk'));
     }
