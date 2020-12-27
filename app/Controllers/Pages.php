@@ -44,23 +44,7 @@ class Pages extends BaseController
             'ukuran' => $ukuran->where('produk_id', $id_produk)->findAll()
         ];
         return view('pages/produk', $data);
-    }
-
-    public function cekSize()
-    {
-        //DB
-        $a = "100cm x 150cm";
-        //User
-        $b = "150cm x 100cm";
-
-        $c = explode(" ", $a);
-        $c = implode(" ", array($c[0], $c[1], $c[2]));
-
-        echo $b . "<br>" . $c;
-
-        //SELECT `ukuran`, `harga` FROM `ukuran` WHERE ukuran = $b
-
-        //SELECT `ukuran`, `harga` FROM `ukuran` WHERE ukuran = $c
+    
     }
 
     public function kategori()
@@ -112,6 +96,15 @@ class Pages extends BaseController
 
         return view('pages/login', $data);
     }
+    public function detail_pembayaran($id_produk)
+    {
+        $data = [
+            'title' => 'detail_pembayaran',
+            'pemesanan' => $this->Pemesanan->pemesanan()
+        ];
+
+        return view('pages/detail_pembayaran', $data);
+    }
     public function shopNow()
     {
 
@@ -143,13 +136,13 @@ class Pages extends BaseController
             'desain' => $this->request->getVar('desain'),
             'ket_pemesanan' => $ukuran . '/' . $harga . ' * '. $this->request->getVar('jumlah') . ' (jumlah) = ' . $harga * $this->request->getVar('jumlah') . $this->request->getVar('deskripsi'),
             'pembayaran' => $this->request->getVar('pembayaran'),
-            'status_pemesanan' => 'cart',
-            'status_pembayaran' => 'belum dibayar',
+            'status_pemesanan' => 'Dalam Antrian',
+            'status_pembayaran' => 'Belum Dibayar',
             'bukti_pembayaran' => '',
             'tgl' => date("Y/m/d")
         ];
         $this->Pemesanan->save($pemesanan);
-        return redirect()->to('/pages/produk/' .  $this->request->getVar('id_produk'));
+        return redirect()->to('/pages/detail_pembayaran/' .  $this->request->getVar('id_produk'));
     }
 
     //--------------------------------------------------------------------

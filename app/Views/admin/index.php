@@ -240,7 +240,7 @@
                     <ul id="sidebarnav">
                         <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="/" aria-expanded="false"><i data-feather="home" class="feather-icon"></i><span class="hide-menu">Tiga Bersaudara</span></a></li>
                         <li class="list-divider"></li>
-                        <li class="nav-small-cap"><span class="hide-menu">Applications</span></li>
+                        <li class="nav-small-cap"><span class="hide-menu"></span></li>
 
                         <li class="sidebar-item"> <a class="sidebar-link" href="/produk" aria-expanded="false"><i data-feather="tag" class="feather-icon"></i><span class="hide-menu">Produk
                                 </span></a>
@@ -251,8 +251,8 @@
                         <li class="sidebar-item"> <a class="sidebar-link" href="/pemesanan" aria-expanded="false"><i data-feather="tag" class="feather-icon"></i><span class="hide-menu">Pemesanan
                                 </span></a>
                         </li>
-                        <li class="list-divider"></li>
-                        <li class="nav-small-cap"><span class="hide-menu">Components</span></li>
+                        <!-- <li class="list-divider"></li> -->
+                        <!-- <li class="nav-small-cap"><span class="hide-menu">Components</span></li>
                         <li class="sidebar-item"> <a class="sidebar-link has-arrow" href="javascript:void(0)" aria-expanded="false"><i data-feather="file-text" class="feather-icon"></i><span class="hide-menu">Forms </span></a>
                             <ul aria-expanded="false" class="collapse  first-level base-level-line">
                                 <li class="sidebar-item"><a href="form-inputs.html" class="sidebar-link"><span class="hide-menu"> Produk
@@ -337,7 +337,7 @@
                         </li>
                         <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="ui-cards.html" aria-expanded="false"><i data-feather="sidebar" class="feather-icon"></i><span class="hide-menu">Cards
                                 </span></a>
-                        </li>
+                        </li> -->
                         <li class="list-divider"></li>
                         <li class="nav-small-cap"><span class="hide-menu">Authentication</span></li>
 
@@ -348,7 +348,7 @@
                                 </span></a>
                         </li>
 
-                        <li class="sidebar-item"> <a class="sidebar-link has-arrow" href="javascript:void(0)" aria-expanded="false"><i data-feather="feather" class="feather-icon"></i><span class="hide-menu">Icons
+                        <!-- <li class="sidebar-item"> <a class="sidebar-link has-arrow" href="javascript:void(0)" aria-expanded="false"><i data-feather="feather" class="feather-icon"></i><span class="hide-menu">Icons
                                 </span></a>
                             <ul aria-expanded="false" class="collapse first-level base-level-line">
                                 <li class="sidebar-item"><a href="icon-fontawesome.html" class="sidebar-link"><span class="hide-menu"> Fontawesome Icons </span></a></li>
@@ -379,7 +379,7 @@
                                 </li>
                                 <li class="sidebar-item"><a href="javascript:void(0)" class="sidebar-link"><span class="hide-menu"> item
                                             1.4</span></a></li>
-                            </ul>
+                            </ul> -->
                         </li>
                         <li class="list-divider"></li>
                         <li class="nav-small-cap"><span class="hide-menu">Extra</span></li>

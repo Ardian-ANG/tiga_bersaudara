@@ -44,10 +44,10 @@
             <li><a href="/pages/keranjang">Keranjang</a></li>
             <li><a href="/pages/checkout">Checkout</a></li>
             <li><a href="/pages/kontak">Kontak Kami</a></li>
+            <li><a href="/pages/detail_pembayaran">detail pembayaran</a></li>
         </ul>
     </li>
     <li><a href="/admin">Admin</a></li>
-    <li><a href="/kategori">Kategori Produk</a></li>
 </ul>
 </div>
 </nav>
