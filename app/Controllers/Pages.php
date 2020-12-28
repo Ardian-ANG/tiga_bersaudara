@@ -6,6 +6,7 @@ use App\Models\ProdukModel;
 use App\Models\KategoriModel;
 use App\Models\Ukuran;
 use App\Models\PemesananModel;
+use App\Models\penggunaModel;
 
 
 class Pages extends BaseController
@@ -14,6 +15,8 @@ class Pages extends BaseController
     protected $Kategori;
     protected $Pemesanan;
     protected $Ukuran;
+    protected $Pengguna;
+    protected $session;
 
     public function __construct()
     {
@@ -21,28 +24,30 @@ class Pages extends BaseController
         $this->Kategori = new KategoriModel();
         $this->Pemesanan = new PemesananModel();
         $this->Ukuran = new Ukuran();
+        $this->Pengguna = new penggunaModel();
+
+        $this->session = session();
     }
 
     public function cekLogin()
     {
-        $a = 0;
-        if ($a()) {
-            $is_admin = $this->Produk->getUser(1);
-
-            if ($is_admin[0]['role'] == 'admin') {
-            } elseif ($is_admin[0]['role'] == 'user') {
-            }
+        $session = session();
+        if ($session->get('role') == 'user') {
+            return redirect()->to('/pages');
         }
     }
 
 
     public function index()
     {
+        $session = session();
+        // dd($session->get());
         // $this->cekLogin();
         $data = [
             'title' => 'Tiga Bersaudara',
             'produk' => $this->Produk->getProduk(),
-            'kategori' => $this->Kategori->getKategori()
+            'kategori' => $this->Kategori->getKategori(),
+            'session' => $session->get('pengguna')
         ];
 
         return view('pages/home', $data);
@@ -95,19 +100,15 @@ class Pages extends BaseController
     public function register()
     {
         $data = [
-            'title' => 'register'
+            'title' => 'register',
+            'validation' => \Config\Services::validation()
+
         ];
 
         return view('pages/register', $data);
     }
-    public function login()
-    {
-        $data = [
-            'title' => 'login'
-        ];
 
-        return view('pages/login', $data);
-    }
+
     public function detail_pembayaran($id_produk)
     {
         $data = [
@@ -141,9 +142,9 @@ class Pages extends BaseController
             $harga = $c[0]['harga'];
             // dd($harga, $ukuran);
         }
-
+        $session = session();
         $pemesanan = [
-            'id_user' => 1,
+            'id_user' => $session->get('id_user'),
             'id_produk' => $this->request->getVar('id_produk'),
             'desain' => $this->request->getVar('desain'),
             'ket_pemesanan' => $ukuran . '/' . $harga . ' * ' . $this->request->getVar('jumlah') . ' (jumlah) = ' . $harga * $this->request->getVar('jumlah') . $this->request->getVar('deskripsi'),
@@ -159,4 +160,47 @@ class Pages extends BaseController
 
     //--------------------------------------------------------------------
 
+    public function login()
+    {
+        $data = [
+            'title' => 'login'
+        ];
+
+        return view('pages/login', $data);
+    }
+
+    public function verifikasi()
+    {
+        
+        $session = session();
+        $username = $this->request->getVar('username');
+        $password = $this->request->getVar('password');
+
+        $data = $this->Pengguna->where('email', $username)->first();
+
+        if ($data) {
+            $verify_pass = password_verify($password, $data['password']);
+            if ($verify_pass) {
+                // echo "berhasil";
+                $pengguna = [
+                    'role' => $data['hak_akses'],
+                    'pengguna' => $data,
+                    'id_user' => $data['id_user'],
+                    'logged_in' => true
+                ];
+                $session->set($pengguna);
+                return redirect()->to('/pages');
+            } else {
+                echo "Gagall bosss";
+            }
+        }
+        // dd($data);
+    }
+
+    public function logout()
+    {
+        $session = session();
+        $session->destroy();
+        return redirect()->to('/pages');
+    }
 }

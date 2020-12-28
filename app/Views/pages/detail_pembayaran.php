@@ -1,6 +1,7 @@
 <?= $this->extend('layout/template'); ?>
 
 <?= $this->Section('content'); ?>
+
 <div class="page-top-info">
     <div class="container">
         <h4>Detail Pembayaran</h4>

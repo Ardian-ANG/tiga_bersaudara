@@ -12,9 +12,11 @@ class PemesananModel extends Model
 
     public function pemesanan()
     {
+        $session = session();
         return $this->db->table('pemesanan')
             ->join('produk', 'produk.id_produk=pemesanan.id_produk')
-            ->join('user', 'user.id_user=pemesanan.id_user')
+            ->join('pengguna', 'pengguna.id_user=pemesanan.id_user')
+            ->where('pengguna.id_user', $session->get('id_user'))
             ->get()->getResultArray();
     }
 }

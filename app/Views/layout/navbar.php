@@ -48,6 +48,7 @@
         </ul>
     </li>
     <li><a href="/admin">Admin</a></li>
+    <li><a href="/penggunaController">Pengguna</a></li>
 
 </ul>
 </div>
