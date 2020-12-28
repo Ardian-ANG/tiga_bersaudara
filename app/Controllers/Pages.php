@@ -7,6 +7,7 @@ use App\Models\KategoriModel;
 use App\Models\Ukuran;
 use App\Models\PemesananModel;
 use KategoriModel as GlobalKategoriModel;
+use Myth\Auth\Entities\User;
 
 class Pages extends BaseController
 {
@@ -21,25 +22,22 @@ class Pages extends BaseController
         $this->Kategori = new KategoriModel();
         $this->Pemesanan = new PemesananModel();
         $this->Ukuran = new Ukuran();
+
+        if(user_id()){
+            $is_admin = $this->Produk->getUser(user_id());
+        }
     }
 
 
     public function index()
     {
-        $admin = $this->Produk->getUser(user_id());
-        if ($admin[0]['role'] == "admin") {
-            echo "Maaf admin tidak bisa kesini bossssss";
-        } else {
+        $data = [
+            'title' => 'Tiga Bersaudara',
+            'produk' => $this->Produk->getProduk(),
+            'kategori' => $this->Kategori->getKategori()
+        ];
 
-
-            $data = [
-                'title' => 'Tiga Bersaudara',
-                'produk' => $this->Produk->getProduk(),
-                'kategori' => $this->Kategori->getKategori()
-            ];
-
-            return view('pages/home', $data);
-        }
+        return view('pages/home', $data);
     }
 
     public function produk($id_produk)
@@ -137,7 +135,7 @@ class Pages extends BaseController
         }
 
         $pemesanan = [
-            'id_user' => 1,
+            'id_user' => user_id(),
             'id_produk' => $this->request->getVar('id_produk'),
             'desain' => $this->request->getVar('desain'),
             'ket_pemesanan' => $ukuran . '/' . $harga . ' * ' . $this->request->getVar('jumlah') . ' (jumlah) = ' . $harga * $this->request->getVar('jumlah') . $this->request->getVar('deskripsi'),
