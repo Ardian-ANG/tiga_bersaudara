@@ -26,13 +26,20 @@ class Pages extends BaseController
 
     public function index()
     {
-        $data = [
-            'title' => 'Tiga Bersaudara',
-            'produk' => $this->Produk->getProduk(),
-            'kategori' => $this->Kategori->getKategori()
-        ];
+        $admin = $this->Produk->getUser(user_id());
+        if ($admin[0]['role'] == "admin") {
+            echo "Maaf admin tidak bisa kesini bossssss";
+        } else {
 
-        return view('pages/home', $data);
+
+            $data = [
+                'title' => 'Tiga Bersaudara',
+                'produk' => $this->Produk->getProduk(),
+                'kategori' => $this->Kategori->getKategori()
+            ];
+
+            return view('pages/home', $data);
+        }
     }
 
     public function produk($id_produk)
@@ -44,7 +51,6 @@ class Pages extends BaseController
             'ukuran' => $ukuran->where('produk_id', $id_produk)->findAll()
         ];
         return view('pages/produk', $data);
-    
     }
 
     public function kategori()
@@ -122,19 +128,19 @@ class Pages extends BaseController
 
             $harga = $c[0]['harga'];
             // dd($harga, $ukuran);
-        }else{
+        } else {
             $ukuran = $ukuran;
             $c = $this->Ukuran->where('ukuran', $ukuran)->find();
-            
+
             $harga = $c[0]['harga'];
             // dd($harga, $ukuran);
         }
-        
+
         $pemesanan = [
             'id_user' => 1,
             'id_produk' => $this->request->getVar('id_produk'),
             'desain' => $this->request->getVar('desain'),
-            'ket_pemesanan' => $ukuran . '/' . $harga . ' * '. $this->request->getVar('jumlah') . ' (jumlah) = ' . $harga * $this->request->getVar('jumlah') . $this->request->getVar('deskripsi'),
+            'ket_pemesanan' => $ukuran . '/' . $harga . ' * ' . $this->request->getVar('jumlah') . ' (jumlah) = ' . $harga * $this->request->getVar('jumlah') . $this->request->getVar('deskripsi'),
             'pembayaran' => $this->request->getVar('pembayaran'),
             'status_pemesanan' => 'Dalam Antrian',
             'status_pembayaran' => 'Belum Dibayar',

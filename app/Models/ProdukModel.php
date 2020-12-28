@@ -33,4 +33,12 @@ class ProdukModel extends Model
         return $this->db->table('ukuran')
                 ->where('produk_id', 89);
     }
+
+    public function getUser($id)
+    {
+        return $this->db->table('users')
+            ->join('coba', 'coba.id_user=users.id')
+            ->where('users.id=' . $id)
+            ->get()->getResultArray();
+    }
 }
