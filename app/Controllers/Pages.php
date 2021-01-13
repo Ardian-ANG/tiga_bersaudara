@@ -29,37 +29,41 @@ class Pages extends BaseController
         $this->session = session();
     }
 
-    public function cekLogin()
-    {
-        $session = session();
-        if ($session->get('role') == 'user') {
-            return redirect()->to('/pages');
-        }
-    }
-
-
     public function index()
     {
-        $session = session();
-        // dd($session->get());
-        // $this->cekLogin();
         $data = [
             'title' => 'Tiga Bersaudara',
             'produk' => $this->Produk->getProduk(),
-            'kategori' => $this->Kategori->getKategori(),
-            'session' => $session->get('pengguna')
-        ];
+            'kategori' => $this->Kategori->findAll(),
+            'session' => $this->session->get('role')
 
+        ];
+        return view('pages/home', $data);
+    }
+    public function cari($Kategori)
+    {
+        $data = [
+            'title' => 'Tiga Bersaudara',
+            'produk' => $this->Produk->where('id_kategori', $Kategori)->find(),
+            'kategori' => $this->Kategori->findAll(),
+            'session' => $this->session->get('role')
+
+        ];
+        // dd($data);
         return view('pages/home', $data);
     }
 
+
     public function produk($id_produk)
     {
+        // $session = session();
         $ukuran = new \App\Models\Ukuran();
         $data = [
-            'title' => 'produk',
+            'title' => 'Produk',
             'produk' => $this->Produk->getDetailProduk($id_produk),
-            'ukuran' => $ukuran->where('produk_id', $id_produk)->findAll()
+            'ukuran' => $ukuran->where('produk_id', $id_produk)->findAll(),
+            'session' => $this->session->get('role')
+
         ];
         return view('pages/produk', $data);
     }
@@ -67,7 +71,9 @@ class Pages extends BaseController
     public function kategori()
     {
         $data = [
-            'title' => 'kategori'
+            'title' => 'kategori',
+            'session' => $this->session->get('role')
+
         ];
 
         return view('pages/kategori', $data);
@@ -75,33 +81,41 @@ class Pages extends BaseController
     public function keranjang()
     {
         $data = [
-            'title' => 'keranjang'
+            'title' => 'keranjang',
+            'session' => $this->session->get('role'),
+            'pemesanan' => $this->Pemesanan->pemesanan()
+
         ];
 
         return view('pages/keranjang', $data);
     }
 
-    public function checkout()
-    {
-        $data = [
-            'title' => 'checkout'
-        ];
+    // public function checkout()
+    // {
+    //     $data = [
+    //         'title' => 'checkout',
+    //         'session' => $this->session->get('role')
 
-        return view('pages/checkout', $data);
-    }
-    public function kontak()
-    {
-        $data = [
-            'title' => 'kontak'
-        ];
+    //     ];
 
-        return view('pages/kontak', $data);
-    }
+    //     return view('pages/checkout', $data);
+    // }
+    // public function kontak()
+    // {
+    //     $data = [
+    //         'title' => 'kontak',
+    //         'session' => $this->session->get('role')
+
+    //     ];
+
+    //     return view('pages/kontak', $data);
+    // }
     public function register()
     {
         $data = [
             'title' => 'register',
-            'validation' => \Config\Services::validation()
+            'validation' => \Config\Services::validation(),
+
 
         ];
 
@@ -113,7 +127,9 @@ class Pages extends BaseController
     {
         $data = [
             'title' => 'detail_pembayaran',
-            'pemesanan' => $this->Pemesanan->pemesanan()
+            // 'produk' => $this->Produk->getDetailProduk($id_produk),
+            'pemesanan' => $this->Pemesanan->pemesanan(),
+            'session' => $this->session->get('role')
         ];
 
         return view('pages/detail_pembayaran', $data);
@@ -147,7 +163,7 @@ class Pages extends BaseController
             'id_user' => $session->get('id_user'),
             'id_produk' => $this->request->getVar('id_produk'),
             'desain' => $this->request->getVar('desain'),
-            'ket_pemesanan' => $ukuran . '/' . $harga . ' * ' . $this->request->getVar('jumlah') . ' (jumlah) = ' . $harga * $this->request->getVar('jumlah') . $this->request->getVar('deskripsi'),
+            'ket_pemesanan' => $ukuran . '/' . $harga . ' * ' . $this->request->getVar('jumlah') . ' (jumlah) = ' . $harga * $this->request->getVar('jumlah') . " " . $this->request->getVar('deskripsi'),
             'pembayaran' => $this->request->getVar('pembayaran'),
             'status_pemesanan' => 'Dalam Antrian',
             'status_pembayaran' => 'Belum Dibayar',
@@ -171,7 +187,7 @@ class Pages extends BaseController
 
     public function verifikasi()
     {
-        
+
         $session = session();
         $username = $this->request->getVar('username');
         $password = $this->request->getVar('password');

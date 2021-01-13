@@ -17,8 +17,7 @@
                     <li class="list-group-item"><b>Waktu Pembuatan : </b><?= $produk[0]['estimasi_waktu']; ?></li>
                 </ul>
                 <div class="card-body">
-                    <a href="/produk" class="card-link">Kembali ke daftar Produk</a>
-                    <a href="#" class="card-link">Another link</a>
+                    <a href="/produk" class="btn btn-warning">Kembali ke daftar Produk</a>
                 </div>
             </div>
 

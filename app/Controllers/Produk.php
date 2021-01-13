@@ -4,35 +4,50 @@ namespace App\Controllers;
 
 use App\Models\ProdukModel;
 use App\Models\KategoriModel;
-use KategoriModel as GlobalKategoriModel;
 
 class Produk extends BaseController
 {
     protected $Produk;
     protected $Kategori;
+    protected $session;
+
 
     public function __construct()
     {
         $this->Produk = new ProdukModel();
         $this->Kategori = new KategoriModel();
+        $this->session = session();
     }
+
 
     public function index()
     {
-        // $Produk = $this->Produk->findAll();
-
+        $session = session();
+        if ($session->get('role') == 'user') {
+            return redirect()->to('/pages');
+        }
+        // $this->CekLogin();
         $data = [
             'title' => 'Halaman Produk',
-            'produk' => $this->Produk->getProduk()
+            'produk' => $this->Produk->getProduk(),
+            'session' => $this->session->get('role')
+
         ];
         return view('pages/produk/produk', $data);
     }
 
     public function detail($id_produk)
     {
+        $session = session();
+        if ($session->get('role') == 'user') {
+            return redirect()->to('/pages');
+        }
+
         $data = [
             'title' => 'Detail Produk',
             'produk' => $this->Produk->getDetailProduk($id_produk),
+            'session' => $this->session->get('role')
+
         ];
         return view('pages/produk/detail', $data);
     }
@@ -40,10 +55,16 @@ class Produk extends BaseController
 
     public function create()
     {
+        $session = session();
+        if ($session->get('role') == 'user') {
+            return redirect()->to('/pages');
+        }
         $data = [
             'title' => 'Form Tamabah Data produk',
             'kategori' => $this->Kategori->getKategori(),
-            'validation' => \Config\Services::validation()
+            'validation' => \Config\Services::validation(),
+            'session' => $this->session->get('role')
+
         ];
 
         return view('pages/produk/tambah', $data);
@@ -155,7 +176,8 @@ class Produk extends BaseController
             'title' => 'Form Ubah Data produk',
             'kategori' => $this->Kategori->getKategori(),
             'validation' => \Config\Services::validation(),
-            'produk' => $this->Produk->getProduk($id_produk)
+            'produk' => $this->Produk->getProduk($id_produk),
+            'session' => $this->session->get('role')
         ];
         return view('pages/produk/ubah', $data);
     }
@@ -246,5 +268,13 @@ class Produk extends BaseController
 
 
         return redirect()->to('/produk');
+    }
+
+    public function CekLogin()
+    {
+        $session = session();
+        if ($session->get('role') == 'user') {
+            return redirect()->to('/pages');
+        }
     }
 }

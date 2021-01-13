@@ -7,17 +7,21 @@ use App\Models\penggunaModel;
 class penggunaController extends BaseController
 {
     protected $pengguna;
+    protected $session;
+
 
     public function __construct()
     {
         $this->pengguna = new penggunaModel();
+        $this->session = session();
     }
 
     public function index()
     {
         $data = [
             'pengguna' => $this->pengguna->findAll(),
-            'title' => "Halaman pengguna"
+            'title' => "Halaman pengguna",
+            'session' => $this->session->get('role')
         ];
 
         return view('pengguna/index', $data);

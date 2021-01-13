@@ -54,22 +54,22 @@
                     <!-- ============================================================== -->
                     <div class="navbar-brand">
                         <!-- Logo icon -->
-                        <a href="index.html">
-                            <b class="logo-icon">
+                        <!-- <a href="index.html"> -->
+                            <!-- <b class="logo-icon"> -->
                                 <!-- Dark Logo icon -->
-                                <img src="/template/admin/assets/images/logo-icon.png" alt="homepage" class="dark-logo" />
+                                <!-- <img src="/template/img/tb.png" alt="homepage" class="dark-logo" /> -->
                                 <!-- Light Logo icon -->
-                                <img src="/template/admin/assets/images/logo-icon.png" alt="homepage" class="light-logo" />
-                            </b>
+                                <!-- <img src="/template/img/tb.png" alt="homepage" class="light-logo" /> -->
+                            <!-- </b> -->
                             <!--End Logo icon -->
                             <!-- Logo text -->
-                            <span class="logo-text">
+                            <!-- <span class="logo-text"> -->
                                 <!-- dark Logo text -->
-                                <img src="/template/admin/assets/images/logo-text.png" alt="homepage" class="dark-logo" />
+                                <!-- <img src="/template/admin/assets/images/logo-text.png" alt="homepage" class="dark-logo" /> -->
                                 <!-- Light Logo text -->
-                                <img src="/template/admin/assets/images/logo-light-text.png" class="light-logo" alt="homepage" />
-                            </span>
-                        </a>
+                                <!-- <img src="/template/admin/assets/images/logo-light-text.png" class="light-logo" alt="homepage" /> -->
+                            <!-- </span> -->
+                        <!-- </a> -->
                     </div>
                     <!-- ============================================================== -->
                     <!-- End Logo -->
@@ -89,10 +89,10 @@
                     <ul class="navbar-nav float-left mr-auto ml-3 pl-1">
                         <!-- Notification -->
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle pl-md-3 position-relative" href="javascript:void(0)" id="bell" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <!-- <a class="nav-link dropdown-toggle pl-md-3 position-relative" href="javascript:void(0)" id="bell" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span><i data-feather="bell" class="svg-icon"></i></span>
                                 <span class="badge badge-primary notify-no rounded-circle">5</span>
-                            </a>
+                            </a> -->
                             <div class="dropdown-menu dropdown-menu-left mailbox animated bounceInDown">
                                 <ul class="list-style-none">
                                     <li>
@@ -153,18 +153,18 @@
                         <!-- ============================================================== -->
                         <!-- create new -->
                         <!-- ============================================================== -->
-                        <li class="nav-item dropdown">
+                        <!-- <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i data-feather="settings" class="svg-icon"></i>
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            </a> -->
+                            <!-- <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="#">Action</a>
                                 <a class="dropdown-item" href="#">Another action</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#">Something else here</a>
-                            </div>
-                        </li>
-                        <li class="nav-item d-none d-md-block">
+                            </div> -->
+                        <!-- </li> -->
+                        <!-- <li class="nav-item d-none d-md-block">
                             <a class="nav-link" href="javascript:void(0)">
                                 <div class="customize-input">
                                     <select class="custom-select form-control bg-white custom-radius custom-shadow border-0">
@@ -175,7 +175,7 @@
                                     </select>
                                 </div>
                             </a>
-                        </li>
+                        </li> -->
                     </ul>
                     <!-- ============================================================== -->
                     <!-- Right side toggle and nav items -->
@@ -184,7 +184,7 @@
                         <!-- ============================================================== -->
                         <!-- Search -->
                         <!-- ============================================================== -->
-                        <li class="nav-item d-none d-md-block">
+                        <!-- <li class="nav-item d-none d-md-block">
                             <a class="nav-link" href="javascript:void(0)">
                                 <form>
                                     <div class="customize-input">
@@ -193,7 +193,7 @@
                                     </div>
                                 </form>
                             </a>
-                        </li>
+                        </li> -->
                         <!-- ============================================================== -->
                         <!-- User profile and search -->
                         <!-- ============================================================== -->
@@ -250,6 +250,9 @@
                                 </span></a>
                         </li>
                         <li class="sidebar-item"> <a class="sidebar-link" href="/pemesanan" aria-expanded="false"><i data-feather="tag" class="feather-icon"></i><span class="hide-menu">Pemesanan
+                                </span></a>
+                        </li>
+                        <li class="sidebar-item"> <a class="sidebar-link" href="/penggunaController" aria-expanded="false"><i data-feather="tag" class="feather-icon"></i><span class="hide-menu">Pengguna
                                 </span></a>
                         </li>
                         <!-- <li class="list-divider"></li> -->
@@ -339,7 +342,7 @@
                         <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="ui-cards.html" aria-expanded="false"><i data-feather="sidebar" class="feather-icon"></i><span class="hide-menu">Cards
                                 </span></a>
                         </li> -->
-                        <li class="list-divider"></li>
+                        <!-- <li class="list-divider"></li>
                         <li class="nav-small-cap"><span class="hide-menu">Authentication</span></li>
 
                         <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="authentication-login1.html" aria-expanded="false"><i data-feather="lock" class="feather-icon"></i><span class="hide-menu">Login
@@ -347,7 +350,7 @@
                         </li>
                         <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="authentication-register1.html" aria-expanded="false"><i data-feather="lock" class="feather-icon"></i><span class="hide-menu">Register
                                 </span></a>
-                        </li>
+                        </li> -->
 
                         <!-- <li class="sidebar-item"> <a class="sidebar-link has-arrow" href="javascript:void(0)" aria-expanded="false"><i data-feather="feather" class="feather-icon"></i><span class="hide-menu">Icons
                                 </span></a>
@@ -383,9 +386,9 @@
                             </ul> -->
                         </li>
                         <li class="list-divider"></li>
-                        <li class="nav-small-cap"><span class="hide-menu">Extra</span></li>
-                        <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="/template/admin//template/admin/docs/docs.html" aria-expanded="false"><i data-feather="edit-3" class="feather-icon"></i><span class="hide-menu">Documentation</span></a></li>
-                        <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="authentication-login1.html" aria-expanded="false"><i data-feather="log-out" class="feather-icon"></i><span class="hide-menu">Logout</span></a></li>
+                        <!-- <li class="nav-small-cap"><span class="hide-menu">Extra</span></li> -->
+                        <!-- <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="/template/admin//template/admin/docs/docs.html" aria-expanded="false"><i data-feather="edit-3" class="feather-icon"></i><span class="hide-menu">Documentation</span></a></li> -->
+                        <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="/pages/logout" aria-expanded="false"><i data-feather="log-out" class="feather-icon"></i><span class="hide-menu">Logout</span></a></li>
                     </ul>
                 </nav>
                 <!-- End Sidebar navigation -->
@@ -402,9 +405,9 @@
             <!-- ============================================================== -->
             <!-- Bread crumb and right sidebar toggle -->
             <!-- ============================================================== -->
-            <div class="page-breadcrumb">
-                <div class="row">
-                    <div class="col-7 align-self-center">
+            <!-- <div class="page-breadcrumb"> -->
+                <!-- <div class="row"> -->
+                    <!-- <div class="col-7 align-self-center">
                         <h4 class="page-title text-truncate text-dark font-weight-medium mb-1">Calendar</h4>
                         <div class="d-flex align-items-center">
                             <nav aria-label="breadcrumb">
@@ -414,8 +417,8 @@
                                 </ol>
                             </nav>
                         </div>
-                    </div>
-                    <div class="col-5 align-self-center">
+                    </div> -->
+                    <!-- <div class="col-5 align-self-center">
                         <div class="customize-input float-right">
                             <select class="custom-select custom-select-set form-control bg-white border-0 custom-shadow custom-radius">
                                 <option selected>Aug 19</option>
@@ -423,9 +426,9 @@
                                 <option value="2">Jun 19</option>
                             </select>
                         </div>
-                    </div>
-                </div>
-            </div>
+                    </div> -->
+                <!-- </div> -->
+            <!-- </div> -->
             <!-- ============================================================== -->
             <!-- End Bread crumb and right sidebar toggle -->
             <!-- ============================================================== -->

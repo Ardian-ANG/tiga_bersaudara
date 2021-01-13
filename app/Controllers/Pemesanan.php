@@ -19,6 +19,7 @@ class Pemesanan extends BaseController
         $this->Produk = new ProdukModel();
         $this->Kategori = new KategoriModel();
         $this->Pemesanan = new PemesananModel();
+        
     }
     public function index()
     {
@@ -26,7 +27,7 @@ class Pemesanan extends BaseController
             'title' => 'Pemesanan dan Pembayaran',
             'pemesanan' => $this->Pemesanan->pemesanan()
         ];
-
+// dd($data);
         return view('admin/pemesanan', $data);
     }
 

@@ -1,4 +1,4 @@
-<?= $this->extend('layout/template'); ?>
+<?= $this->extend('admin/index'); ?>
 
 <?= $this->Section('content'); ?>
 <div class="container">

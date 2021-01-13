@@ -25,20 +25,20 @@
                 <div class="product-pic-zoom">
                     <img class="product-big-img" src="/gambar/<?= $produk[0]['gambar']; ?>" alt="">
                 </div>
-                <div class="product-thumbs" tabindex="1" style="overflow: hidden; outline: none;">
+                <!-- <div class="product-thumbs" tabindex="1" style="overflow: hidden; outline: none;">
                     <div class="product-thumbs-track">
                         <div class="pt active" data-imgbigurl="img/single-product/1.jpg"><img src="img/single-product/thumb-1.jpg" alt=""></div>
                         <div class="pt" data-imgbigurl="img/single-product/2.jpg"><img src="img/single-product/thumb-2.jpg" alt=""></div>
                         <div class="pt" data-imgbigurl="img/single-product/3.jpg"><img src="img/single-product/thumb-3.jpg" alt=""></div>
                         <div class="pt" data-imgbigurl="img/single-product/4.jpg"><img src="img/single-product/thumb-4.jpg" alt=""></div>
                     </div>
-                </div>
+                </div> -->
             </div>
             <div class="col-lg-6 product-details">
                 <h2 class="p-title"><?= $produk[0]['nama_produk']; ?></h2>
                 <h3 class="p-price">Rp. <?= $produk[0]['harga']; ?></h3>
 
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cupiditate sit impedit architecto, porro illum eius fugit modi ducimus necessitatibus incidunt a nemo eveniet possimus doloribus eos nisi ex nostrum earum.</p>
+                <p><?= $produk[0]['keterangan']; ?></p>
 
 
 

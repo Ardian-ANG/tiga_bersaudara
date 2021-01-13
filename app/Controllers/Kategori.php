@@ -15,7 +15,9 @@ class Kategori extends BaseController
     {
         $this->Produk = new ProdukModel();
         $this->Kategori = new KategoriModel();
+         
     }
+
 
     public function index()
     {
