@@ -33,31 +33,21 @@
                 <p> Minamal yang dibayar (Uang Muka): Rp. <?php echo $explode[7] / 2; ?> </p>
 
 
-                <form action="/pages/keranjang" method="post">
-                    <input type="hidden" value="" name="id_produk">
+                <form action="/pages/upload_bukti/<?= $pemesanan[0]['id']; ?>" method="post" enctype="multipart/form-data">
                     <div class="row">
                         <div class="form-group col-2">
                             <label for="exampleFormControlFile1">Upload Bukti Transfer</label>
                         </div>
                         <div class="form-group col-2">
-                            <input type="file" class="form-control-file" id="exampleFormControlFile1" name="desain">
+                            <input required type="file" class="form-control-file" id="exampleFormControlFile1" name="bukti">
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="form-group col-2">
-                            <label for="exampleFormControlFile1">Catatan</label>
-                        </div>
-                        <div class="form-group ">
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" cols="45" name="deskripsi"></textarea>
-                        </div>
-                    </div>
-                    <button type="submit" class="btn btn-primary ml-4">Keranjang</button>
+                    <button type="submit" class="btn btn-primary mr-4 mb-2">upload</button>
 
                 </form>
-                <!-- <?php $i = 1; ?>
-                            <?php foreach ($pemesanan as $p) : ?>
-                                
-                            <?php endforeach; ?> -->
+                    <a href="/pages/keranjang">
+                        <button class="btn btn-info">Keranjang</button>
+                    </a>
             </div>
         </div>
     </div>

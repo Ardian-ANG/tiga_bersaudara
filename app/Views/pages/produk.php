@@ -42,7 +42,7 @@
 
 
 
-                <form action="/pages/shopNow" method="post">
+                <form action="/pages/shopNow" method="post" enctype="multipart/form-data">
                     <input type="hidden" value="<?= $produk[0]['id_produk']; ?>" name="id_produk">
                     <div class="row mt-5">
                         <div class="form-group col-2 ">
@@ -55,6 +55,8 @@
                             </select>
                         </div>
                     </div>
+                    <?php if($ukuran != null){ ?>
+                    
                     <div class="row mt-5">
                         <div class="form-group col-2 ">
                             <label for="exampleFormControlSelect1">Pilih Ukuran</label>
@@ -65,9 +67,11 @@
                                     <option value="<?= $p['ukuran']; ?>"><?= $p['ukuran']; ?></option>
                                 <?php endforeach ?>
                                 <option value="custom">custom</option>
-                            </select></div>
+                            </select>
+                        </div>
                         <div class="ukuran"></div>
                     </div>
+                    <?php } ?>
                     <div class="quantity">
                         <p>Jumlah</p>
                         <div class="pro-qty ml-4"><input type="text" value="1" name="jumlah"></div>

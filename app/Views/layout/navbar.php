@@ -8,17 +8,17 @@
     </li>
     <li><a href="#">Kebutuhan Promosi</a>
         <ul class="sub-menu">
-            <li><a href="#">Sneakers</a></li>
+        <li><a href="/pages/produk/96">Kartu Nama</a></li>
         </ul>
     </li>
     <li><a href="#">Suvenir</a>
         <ul class="sub-menu">
-            <li><a href="#">Sneakers</a></li>
+            <li><a href="/pages/produk/95">Mug</a></li>
         </ul>
     </li>
     <li><a href="#">Textile</a>
         <ul class="sub-menu">
-            <li><a href="#">Sneakers</a></li>
+        <li><a href="/pages/produk/90">Baju</a></li>
         </ul>
     </li>
     <?php if ($session == 'admin') : ?>

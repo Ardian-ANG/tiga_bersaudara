@@ -26,4 +26,14 @@ class PemesananModel extends Model
             ->join('pengguna', 'pengguna.id_user=pemesanan.id_user')
             ->get()->getResultArray();
     }
+
+    public function detail_pembayaran($id)
+    {
+        $session = session();
+        return $this->db->table('pemesanan')
+            ->join('produk', 'produk.id_produk=pemesanan.id_produk')
+            ->where('pemesanan.id', $id)
+            ->where('pemesanan.id_user', $session->get('id_user'))
+            ->get()->getResultArray();
+    }
 }

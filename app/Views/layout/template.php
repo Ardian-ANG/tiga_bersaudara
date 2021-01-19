@@ -63,7 +63,6 @@
                             <div class="up-item">
                                 <div class="shopping-card">
                                     <i class="flaticon-bag"></i>
-                                    <span>0</span>
                                 </div>
                                 <a href="/pages/keranjang">Keranjang Belanja</a>
                             </div>

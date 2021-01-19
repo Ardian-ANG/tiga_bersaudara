@@ -75,17 +75,17 @@
                             </div>
                             <div class="form-group">
                                 <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
-                                <label for="agree-term" class="label-agree-term"><span><span></span></span>I agree all statements in <a href="#" class="term-service">Terms of service</a></label>
+                                <a href="/pages/login" class="signup-image-link">I am already member</a>
                             </div>
                             <div class="form-group form-button">
                                 <input type="submit" name="signup" id="signup" class="form-submit" value="Register" />
                             </div>
                         </form>
                     </div>
-                    <div class="signup-image">
+                    <!-- <div class="signup-image">
                         <figure><img src="/auth/images/rog.png" alt="sing up image"></figure>
-                        <a href="/pages/login" class="signup-image-link">I am already member</a>
-                    </div>
+                       
+                    </div> -->
                 </div>
             </div>
         </section>

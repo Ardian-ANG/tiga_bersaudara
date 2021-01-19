@@ -31,14 +31,21 @@ class ProdukModel extends Model
     public function getSize($id_produk)
     {
         return $this->db->table('ukuran')
-                ->where('produk_id', 89);
+            ->where('produk_id', 89);
     }
 
-    public function getUser($id)
+    // public function getUser($id)
+    // {
+    //     return $this->db->table('users')
+    //         ->join('coba', 'coba.id_user=users.id')
+    //         ->where('users.id=' . $id)
+    //         ->get()->getResultArray();
+    // }
+
+    public function getTemplate($id_produk)
     {
-        return $this->db->table('users')
-            ->join('coba', 'coba.id_user=users.id')
-            ->where('users.id=' . $id)
-            ->get()->getResultArray();
+        return $this->db->table('template')
+            ->join('produk', 'produk.id_produk=template.id_produk')
+            ->where('template.id_produk=' . $id_produk);
     }
 }

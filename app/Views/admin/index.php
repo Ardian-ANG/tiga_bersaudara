@@ -55,20 +55,20 @@
                     <div class="navbar-brand">
                         <!-- Logo icon -->
                         <!-- <a href="index.html"> -->
-                            <!-- <b class="logo-icon"> -->
-                                <!-- Dark Logo icon -->
-                                <!-- <img src="/template/img/tb.png" alt="homepage" class="dark-logo" /> -->
-                                <!-- Light Logo icon -->
-                                <!-- <img src="/template/img/tb.png" alt="homepage" class="light-logo" /> -->
-                            <!-- </b> -->
-                            <!--End Logo icon -->
-                            <!-- Logo text -->
-                            <!-- <span class="logo-text"> -->
-                                <!-- dark Logo text -->
-                                <!-- <img src="/template/admin/assets/images/logo-text.png" alt="homepage" class="dark-logo" /> -->
-                                <!-- Light Logo text -->
-                                <!-- <img src="/template/admin/assets/images/logo-light-text.png" class="light-logo" alt="homepage" /> -->
-                            <!-- </span> -->
+                        <!-- <b class="logo-icon"> -->
+                        <!-- Dark Logo icon -->
+                        <!-- <img src="/template/img/tb.png" alt="homepage" class="dark-logo" /> -->
+                        <!-- Light Logo icon -->
+                        <!-- <img src="/template/img/tb.png" alt="homepage" class="light-logo" /> -->
+                        <!-- </b> -->
+                        <!--End Logo icon -->
+                        <!-- Logo text -->
+                        <!-- <span class="logo-text"> -->
+                        <!-- dark Logo text -->
+                        <!-- <img src="/template/admin/assets/images/logo-text.png" alt="homepage" class="dark-logo" /> -->
+                        <!-- Light Logo text -->
+                        <!-- <img src="/template/admin/assets/images/logo-light-text.png" class="light-logo" alt="homepage" /> -->
+                        <!-- </span> -->
                         <!-- </a> -->
                     </div>
                     <!-- ============================================================== -->
@@ -157,7 +157,7 @@
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i data-feather="settings" class="svg-icon"></i>
                             </a> -->
-                            <!-- <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <!-- <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="#">Action</a>
                                 <a class="dropdown-item" href="#">Another action</a>
                                 <div class="dropdown-divider"></div>
@@ -197,7 +197,7 @@
                         <!-- ============================================================== -->
                         <!-- User profile and search -->
                         <!-- ============================================================== -->
-                        <li class="nav-item dropdown">
+                        <!-- <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="javascript:void(0)" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <img src="/template/admin/assets/images/users/profile-pic.jpg" alt="user" class="rounded-circle" width="40">
                                 <span class="ml-2 d-none d-lg-inline-block"><span>Hello,</span> <span class="text-dark">Ardian ANG</span> <i data-feather="chevron-down" class="svg-icon"></i></span>
@@ -219,7 +219,7 @@
                                 <div class="pl-4 p-3"><a href="javascript:void(0)" class="btn btn-sm btn-info">View
                                         Profile</a></div>
                             </div>
-                        </li>
+                        </li> -->
                         <!-- ============================================================== -->
                         <!-- User profile and search -->
                         <!-- ============================================================== -->
@@ -253,6 +253,9 @@
                                 </span></a>
                         </li>
                         <li class="sidebar-item"> <a class="sidebar-link" href="/penggunaController" aria-expanded="false"><i data-feather="tag" class="feather-icon"></i><span class="hide-menu">Pengguna
+                                </span></a>
+                        </li>
+                        <li class="sidebar-item"> <a class="sidebar-link" href="/admin" aria-expanded="false"><i data-feather="tag" class="feather-icon"></i><span class="hide-menu">Laporan
                                 </span></a>
                         </li>
                         <!-- <li class="list-divider"></li> -->
@@ -406,8 +409,8 @@
             <!-- Bread crumb and right sidebar toggle -->
             <!-- ============================================================== -->
             <!-- <div class="page-breadcrumb"> -->
-                <!-- <div class="row"> -->
-                    <!-- <div class="col-7 align-self-center">
+            <!-- <div class="row"> -->
+            <!-- <div class="col-7 align-self-center">
                         <h4 class="page-title text-truncate text-dark font-weight-medium mb-1">Calendar</h4>
                         <div class="d-flex align-items-center">
                             <nav aria-label="breadcrumb">
@@ -418,7 +421,7 @@
                             </nav>
                         </div>
                     </div> -->
-                    <!-- <div class="col-5 align-self-center">
+            <!-- <div class="col-5 align-self-center">
                         <div class="customize-input float-right">
                             <select class="custom-select custom-select-set form-control bg-white border-0 custom-shadow custom-radius">
                                 <option selected>Aug 19</option>
@@ -427,7 +430,7 @@
                             </select>
                         </div>
                     </div> -->
-                <!-- </div> -->
+            <!-- </div> -->
             <!-- </div> -->
             <!-- ============================================================== -->
             <!-- End Bread crumb and right sidebar toggle -->

@@ -4,12 +4,16 @@ namespace App\Controllers;
 
 use App\Models\ProdukModel;
 use App\Models\KategoriModel;
+use App\Models\TemplateModel;
+
 
 class Produk extends BaseController
 {
     protected $Produk;
     protected $Kategori;
     protected $session;
+    protected $Template;
+
 
 
     public function __construct()
@@ -17,6 +21,7 @@ class Produk extends BaseController
         $this->Produk = new ProdukModel();
         $this->Kategori = new KategoriModel();
         $this->session = session();
+        // $this->Template = new TemplateModel();
     }
 
 

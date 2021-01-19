@@ -69,17 +69,17 @@
 <section class="product-filter-section">
     <div class="container">
         <div class="section-title">
-            <h2>BROWSE TOP SELLING PRODUCTS</h2>
+            <!-- <h2>BROWSE TOP SELLING PRODUCTS</h2> -->
         </div>
         <ul class="product-filter-menu">
             <li><a href="/pages/">All</a></li>
-        <?php foreach ($kategori as $p) : ?>
-        <li><a href="/pages/cari/<?= $p['id_kategori']; ?>"><?= $p['kategori']; ?></a></li>
-        <?php endforeach; ?>
+            <?php foreach ($kategori as $p) : ?>
+                <li><a href="/pages/cari/<?= $p['id_kategori']; ?>"><?= $p['kategori']; ?></a></li>
+            <?php endforeach; ?>
         </ul>
         <div class="row">
             <?php $i = 1; ?>
-            <?php if($produk == null){
+            <?php if ($produk == null) {
                 echo "Produk Belum Tersedia";
             } ?>
             <?php foreach ($produk as $p) : ?>
@@ -87,13 +87,9 @@
                     <div class="product-item">
                         <div class="pi-pic">
                             <img src="/gambar/<?= $p['gambar']; ?>" alt="">
-                            <!-- <div class="pi-links">
-                                <a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
-                                <a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-                            </div> -->
                         </div>
                         <div class="pi-text">
-                            <h6>Rp. <?= $produk[0]['harga']; ?></h6>
+                            <!-- <h6>Rp. <?= $produk[0]['harga']; ?></h6> -->
                             <a href="/pages/produk/<?= $p['id_produk']; ?>" class="card-link"><?= $p['nama_produk']; ?></a>
 
                         </div>
@@ -105,19 +101,4 @@
             <button class="site-btn sb-line sb-dark">LOAD MORE</button>
         </div>
 </section>
-<!-- Product filter section end -->
-
-
-<!-- Banner section -->
-<!-- <section class="banner-section">
-    <div class="container">
-        <div class="banner set-bg" data-setbg="/template/img/banner-bg.jpg">
-            <div class="tag-new">NEW</div>
-            <span>New Arrivals</span>
-            <h2>STRIPED SHIRTS</h2>
-            <a href="#" class="site-btn">SHOP NOW</a>
-        </div>
-    </div>
-</section> -->
-<!-- Banner section end  -->
 <?= $this->endSection(); ?>

@@ -65,6 +65,7 @@ class Pages extends BaseController
             'session' => $this->session->get('role')
 
         ];
+        // dd($data);
         return view('pages/produk', $data);
     }
 
@@ -83,33 +84,12 @@ class Pages extends BaseController
         $data = [
             'title' => 'keranjang',
             'session' => $this->session->get('role'),
-            'pemesanan' => $this->Pemesanan->pemesanan()
+            'pemesanan' => $this->Pemesanan->pemesananUser()
 
         ];
 
         return view('pages/keranjang', $data);
     }
-
-    // public function checkout()
-    // {
-    //     $data = [
-    //         'title' => 'checkout',
-    //         'session' => $this->session->get('role')
-
-    //     ];
-
-    //     return view('pages/checkout', $data);
-    // }
-    // public function kontak()
-    // {
-    //     $data = [
-    //         'title' => 'kontak',
-    //         'session' => $this->session->get('role')
-
-    //     ];
-
-    //     return view('pages/kontak', $data);
-    // }
     public function register()
     {
         $data = [
@@ -128,7 +108,7 @@ class Pages extends BaseController
         $data = [
             'title' => 'detail_pembayaran',
             // 'produk' => $this->Produk->getDetailProduk($id_produk),
-            'pemesanan' => $this->Pemesanan->pemesanan(),
+            'pemesanan' => $this->Pemesanan->detail_pembayaran($id_produk),
             'session' => $this->session->get('role')
         ];
 
@@ -136,34 +116,54 @@ class Pages extends BaseController
     }
     public function shopNow()
     {
-
-        $ukuran = $this->request->getVar('ukuran');
-        $harga = "";
-        if ($ukuran == "custom") {
-            $ukuran1 = $this->request->getVar('ukuran1');
-            $ukuran2 = $this->request->getVar('ukuran2');
-            $acak = $ukuran1 . " x " . $ukuran2;
-            $ukuran = $acak;
-
-            $c = explode(" ", $ukuran);
-            $c = implode(" ", array($c[2], $c[1], $c[0]));
-            $c = $this->Ukuran->where('ukuran', $c)->find();
-
-            $harga = $c[0]['harga'];
-            // dd($harga, $ukuran);
+        // ambil gambar
+        $fileGambar = $this->request->getFile('desain');
+        // apakah tidak ada gambar yang diupload
+        if ($fileGambar->getError() == 4) {
+            $namaGambar = '';
         } else {
-            $ukuran = $ukuran;
-            $c = $this->Ukuran->where('ukuran', $ukuran)->find();
 
-            $harga = $c[0]['harga'];
-            // dd($harga, $ukuran);
+            // generate nama gambar random
+            $namaGambar = $fileGambar->getRandomName();
+            // pindahkan file ke gambar
+            $fileGambar->move('custom_desain', $namaGambar);
         }
+        // dd($this->request->getVar(), $namaGambar);
+
+        if($this->request->getVar('ukuran')){
+            $ukuran = $this->request->getVar('ukuran');
+            $harga = "";
+            if ($ukuran == "custom") {
+                $ukuran1 = $this->request->getVar('ukuran1');
+                $ukuran2 = $this->request->getVar('ukuran2');
+                $acak = $ukuran1 . " x " . $ukuran2;
+                $ukuran = $acak;
+    
+                $c = explode(" ", $ukuran);
+                $c = implode(" ", array($c[2], $c[1], $c[0]));
+                $c = $this->Ukuran->where('ukuran', $c)->find();
+    
+                $harga = $c[0]['harga'];
+                // dd($harga, $ukuran);
+            } else {
+                $ukuran = $ukuran;
+                $c = $this->Ukuran->where('ukuran', $ukuran)->find();
+    
+                $harga = $c[0]['harga'];
+                // dd($harga, $ukuran);
+            }
+            $ket_pemesanan=$ukuran . '/' . $harga . ' * ' . $this->request->getVar('jumlah') . ' (jumlah) = ' . $harga * $this->request->getVar('jumlah') . " " . $this->request->getVar('deskripsi');
+        }else{
+            
+            $ket_pemesanan='tidak ada';
+        }
+
         $session = session();
         $pemesanan = [
             'id_user' => $session->get('id_user'),
             'id_produk' => $this->request->getVar('id_produk'),
-            'desain' => $this->request->getVar('desain'),
-            'ket_pemesanan' => $ukuran . '/' . $harga . ' * ' . $this->request->getVar('jumlah') . ' (jumlah) = ' . $harga * $this->request->getVar('jumlah') . " " . $this->request->getVar('deskripsi'),
+            'desain' => $namaGambar,
+            'ket_pemesanan' => $ket_pemesanan,
             'pembayaran' => $this->request->getVar('pembayaran'),
             'status_pemesanan' => 'Dalam Antrian',
             'status_pembayaran' => 'Belum Dibayar',
@@ -171,9 +171,53 @@ class Pages extends BaseController
             'tgl' => date("Y/m/d")
         ];
         $this->Pemesanan->save($pemesanan);
-        return redirect()->to('/pages/detail_pembayaran/' .  $this->request->getVar('id_produk'));
+        return redirect()->to('/pages/keranjang/');
     }
 
+    public function delete_pemesanan($id_pemesanan)
+    {
+        $pemesanan = $this->Pemesanan->find($id_pemesanan);
+
+        // cek gambar default.jpg
+        if ($pemesanan['desain'] != 'default.jpg') {
+
+            // hapus gambar
+            unlink('custom_desain/' . $pemesanan['desain']);
+        }
+
+
+        $this->Pemesanan->delete($id_pemesanan);
+        session()->setflashdata('pesan', 'Produk berhasil dihapus.');
+        return redirect()->to('/pages/keranjang');
+    }
+
+    public function upload_bukti($id)
+    {
+        // ambil gambar
+        $pemesanan = $this->Pemesanan->find($id);
+
+        // cek gambar default.jpg
+        if ($pemesanan['bukti_pembayaran'] != '') {
+
+            // hapus gambar
+            unlink('pembayaran/' . $pemesanan['bukti_pembayaran']);
+        }
+
+        $fileGambar = $this->request->getFile('bukti');
+        // apakah tidak ada gambar yang diupload
+        if ($fileGambar->getError() == 4) {
+            $namaGambar = '';
+        } else {
+
+            // generate nama gambar random
+            $namaGambar = $fileGambar->getRandomName();
+            // pindahkan file ke gambar
+            $fileGambar->move('pembayaran', $namaGambar);
+        }
+
+        $this->Pemesanan->update($id, ['bukti_pembayaran' => $namaGambar]);
+        return redirect()->to('/pages/detail_pembayaran/' . $id);
+    }
     //--------------------------------------------------------------------
 
     public function login()
@@ -197,7 +241,6 @@ class Pages extends BaseController
         if ($data) {
             $verify_pass = password_verify($password, $data['password']);
             if ($verify_pass) {
-                // echo "berhasil";
                 $pengguna = [
                     'role' => $data['hak_akses'],
                     'pengguna' => $data,
@@ -207,10 +250,9 @@ class Pages extends BaseController
                 $session->set($pengguna);
                 return redirect()->to('/pages');
             } else {
-                echo "Gagall bosss";
+                echo "Email atau Password SALAH...!!!";
             }
         }
-        // dd($data);
     }
 
     public function logout()
