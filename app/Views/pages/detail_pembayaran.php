@@ -29,8 +29,8 @@
                 <?php $explode = explode(" ", $pemesanan[0]['ket_pemesanan']); ?>
                 <p><?= $pemesanan[0]['ket_pemesanan']; ?></p>
                 <p>Status Pemesanan : <?= $pemesanan[0]['status_pemesanan']; ?></p>
-                <p>Total Harga : Rp. <?php echo $explode[7]; ?> </p>
-                <p> Minamal yang dibayar (Uang Muka): Rp. <?php echo $explode[7] / 2; ?> </p>
+                <p>Total Harga : Rp. <?= $explode[3]; ?> </p>
+                <p>Total Transfer : Rp. <?= $explode[3] / 2; ?> </p>
 
 
                 <form action="/pages/upload_bukti/<?= $pemesanan[0]['id']; ?>" method="post" enctype="multipart/form-data">

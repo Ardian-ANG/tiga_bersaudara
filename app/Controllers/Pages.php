@@ -40,6 +40,8 @@ class Pages extends BaseController
         ];
         return view('pages/home', $data);
     }
+
+
     public function cari($Kategori)
     {
         $data = [
@@ -130,7 +132,7 @@ class Pages extends BaseController
         }
         // dd($this->request->getVar(), $namaGambar);
 
-        if($this->request->getVar('ukuran')){
+        if ($this->request->getVar('ukuran')) {
             $ukuran = $this->request->getVar('ukuran');
             $harga = "";
             if ($ukuran == "custom") {
@@ -138,24 +140,28 @@ class Pages extends BaseController
                 $ukuran2 = $this->request->getVar('ukuran2');
                 $acak = $ukuran1 . " x " . $ukuran2;
                 $ukuran = $acak;
-    
+
                 $c = explode(" ", $ukuran);
                 $c = implode(" ", array($c[2], $c[1], $c[0]));
                 $c = $this->Ukuran->where('ukuran', $c)->find();
-    
+
                 $harga = $c[0]['harga'];
                 // dd($harga, $ukuran);
             } else {
                 $ukuran = $ukuran;
                 $c = $this->Ukuran->where('ukuran', $ukuran)->find();
-    
+
                 $harga = $c[0]['harga'];
                 // dd($harga, $ukuran);
             }
-            $ket_pemesanan=$ukuran . '/' . $harga . ' * ' . $this->request->getVar('jumlah') . ' (jumlah) = ' . $harga * $this->request->getVar('jumlah') . " " . $this->request->getVar('deskripsi');
-        }else{
-            
-            $ket_pemesanan='tidak ada';
+            // $ket_pemesanan = $ukuran . '/' . $harga . ' * ' . $this->request->getVar('jumlah') . ' (jumlah) = ' . $harga * $this->request->getVar('jumlah') . " " . $this->request->getVar('deskripsi');
+            $jumlah = $harga * $this->request->getVar('jumlah');
+            $ket_pemesanan = $harga . " x " . $this->request->getVar('jumlah') . "= " . $jumlah . " - " . $this->request->getVar('deskripsi');
+        } else {
+            $pemesanan = $this->Produk->find($this->request->getVar('id_produk'));
+            // dd($pemesanan['harga'], $this->request->getVar('id_produk'));
+            $jumlah = $this->request->getVar('jumlah') * $pemesanan['harga'];
+            $ket_pemesanan = $pemesanan['harga'] . " x " . $this->request->getVar('jumlah') . "= " . $jumlah . " - " . $this->request->getVar('deskripsi');
         }
 
         $session = session();
@@ -179,7 +185,7 @@ class Pages extends BaseController
         $pemesanan = $this->Pemesanan->find($id_pemesanan);
 
         // cek gambar default.jpg
-        if ($pemesanan['desain'] != 'default.jpg') {
+        if ($pemesanan['desain']) {
 
             // hapus gambar
             unlink('custom_desain/' . $pemesanan['desain']);
@@ -260,5 +266,24 @@ class Pages extends BaseController
         $session = session();
         $session->destroy();
         return redirect()->to('/pages');
+    }
+
+    /**
+     * Fungsi Untuk Print Laporan
+     * 
+     */
+
+    function Print_Laporan()
+    {
+        $data = [
+            'title' => 'Tiga Bersaudara',
+            'produk' => $this->Produk->laporanProduk()
+        ];
+        $dompdf = new \Dompdf\Dompdf();
+        $dompdf->loadHtml(view('laporan/produk', $data));
+        $dompdf->setPaper('A4', 'landscape');
+        $dompdf->render();
+        $dompdf->stream();
+        // dd($data);
     }
 }

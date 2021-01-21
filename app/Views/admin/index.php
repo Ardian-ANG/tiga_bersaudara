@@ -255,7 +255,7 @@
                         <li class="sidebar-item"> <a class="sidebar-link" href="/penggunaController" aria-expanded="false"><i data-feather="tag" class="feather-icon"></i><span class="hide-menu">Pengguna
                                 </span></a>
                         </li>
-                        <li class="sidebar-item"> <a class="sidebar-link" href="/admin" aria-expanded="false"><i data-feather="tag" class="feather-icon"></i><span class="hide-menu">Laporan
+                        <li class="sidebar-item"> <a class="sidebar-link" href="/pages/print_laporan" aria-expanded="false"><i data-feather="tag" class="feather-icon"></i><span class="hide-menu">Laporan
                                 </span></a>
                         </li>
                         <!-- <li class="list-divider"></li> -->

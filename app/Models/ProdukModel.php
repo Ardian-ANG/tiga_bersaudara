@@ -48,4 +48,14 @@ class ProdukModel extends Model
             ->join('produk', 'produk.id_produk=template.id_produk')
             ->where('template.id_produk=' . $id_produk);
     }
+
+
+    public function laporanProduk()
+    {
+        return $this->db->table('produk')
+            ->join('pemesanan', 'pemesanan.id_produk=produk.id_produk')
+            ->join('pengguna', 'pengguna.id_user=pemesanan.id_user')
+            ->where('pemesanan.status_pemesanan', 'Sudah Selesai')
+            ->get()->getResultArray();
+    }
 }

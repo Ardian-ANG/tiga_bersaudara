@@ -23,7 +23,7 @@
     </li>
     <?php if ($session == 'admin') : ?>
 
-        <li><a href="#">Pages</a>
+        <!-- <li><a href="#">Pages</a>
             <ul class="sub-menu">
                 <li><a href="/pages/produk">Keterangan Produk</a></li>
                 <li><a href="/pages/kategori">Kategori Produk</a></li>
@@ -32,7 +32,7 @@
                 <li><a href="/pages/kontak">Kontak Kami</a></li>
                 <li><a href="/pages/detail_pembayaran">detail pembayaran</a></li>
             </ul>
-        </li>
+        </li> -->
         <li><a href="/admin">Admin</a></li>
     <?php endif; ?>
     <?php if ($session == 'user') : ?>
