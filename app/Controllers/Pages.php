@@ -7,7 +7,7 @@ use App\Models\KategoriModel;
 use App\Models\Ukuran;
 use App\Models\PemesananModel;
 use App\Models\penggunaModel;
-
+use App\Models\template_produkModel;
 
 class Pages extends BaseController
 {
@@ -16,6 +16,7 @@ class Pages extends BaseController
     protected $Pemesanan;
     protected $Ukuran;
     protected $Pengguna;
+    protected $Template;
     protected $session;
 
     public function __construct()
@@ -25,15 +26,16 @@ class Pages extends BaseController
         $this->Pemesanan = new PemesananModel();
         $this->Ukuran = new Ukuran();
         $this->Pengguna = new penggunaModel();
+        $this->Template = new template_produkModel();
 
         $this->session = session();
     }
 
     public function index($kategori = null)
     {
-        if($kategori){
+        if ($kategori) {
             $produk = $this->Produk->where('id_kategori', $kategori)->find();
-        }else{
+        } else {
             $produk = $this->Produk->findAll(8);
         }
         $data = [
@@ -68,10 +70,12 @@ class Pages extends BaseController
         $data = [
             'title' => 'Produk',
             'produk' => $this->Produk->getDetailProduk($id_produk),
-            'ukuran' => $ukuran->where('produk_id', $id_produk)->findAll(),
+            'ukuran' => $ukuran->where('produk_id', $id_produk)->find(),
+            'template' => $this->Template->where('id_produk', $id_produk)->find(),
             'session' => $this->session->get('role')
 
         ];
+
         // dd($data);
         return view('pages/produk', $data);
     }
@@ -124,7 +128,7 @@ class Pages extends BaseController
     public function shopNow()
     {
         // dd(date("Y/m/d"));
-        if(empty($this->session->get('role'))){
+        if (empty($this->session->get('role'))) {
             return redirect()->to('/pages/login');
         }
 

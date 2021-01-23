@@ -4,7 +4,8 @@ namespace App\Controllers;
 
 use App\Models\ProdukModel;
 use App\Models\KategoriModel;
-use App\Models\TemplateModel;
+use App\Models\template_produkModel;
+use App\Models\ukuranModel;
 
 
 class Produk extends BaseController
@@ -13,6 +14,7 @@ class Produk extends BaseController
     protected $Kategori;
     protected $session;
     protected $Template;
+    protected $Ukuran;
 
 
 
@@ -20,8 +22,9 @@ class Produk extends BaseController
     {
         $this->Produk = new ProdukModel();
         $this->Kategori = new KategoriModel();
+        $this->template_produk = new template_produkModel();
+        $this->Ukuran = new ukuranModel();
         $this->session = session();
-        // $this->Template = new TemplateModel();
     }
 
 
@@ -180,6 +183,8 @@ class Produk extends BaseController
         $data = [
             'title' => 'Form Ubah Data produk',
             'kategori' => $this->Kategori->getKategori(),
+            'ukuran' => $this->Ukuran->where("produk_id", $id_produk)->find(),
+            'template_produk' => $this->template_produk->where("id_produk", $id_produk)->find(),
             'validation' => \Config\Services::validation(),
             'produk' => $this->Produk->getProduk($id_produk),
             'session' => $this->session->get('role')

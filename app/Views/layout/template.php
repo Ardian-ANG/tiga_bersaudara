@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="/template/css/owl.carousel.min.css" />
     <link rel="stylesheet" href="/template/css/animate.css" />
     <link rel="stylesheet" href="/template/css/style.css" />
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/carousnap/carousnap@v1.4/carousnap/carousnap.css" type="text/css"/>
     <!-- My css -->
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/jquery.fancybox.css">
@@ -112,7 +112,7 @@
                 <script src="/template/js/jquery-ui.min.js"></script>
                 <script src="/template/js/main.js"></script>
                 <script src="/css/jquery.fancybox.js"></script>
-
+                <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/carousnap/carousnap@v1.4/carousnap/carousnap.js" id="scriptCarousnap"></script>
                 <script>
                     $(document).ready(function() {
                         $("select.ukuran").change(function() {

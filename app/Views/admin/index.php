@@ -19,6 +19,7 @@
 
     <!-- My css -->
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/carousnap/carousnap@v1.4/carousnap/carousnap.css" type="text/css"/>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -250,11 +251,17 @@
                                 </span></a>
                         </li>
                         <li class="sidebar-item"> <a class="sidebar-link" href="/pemesanan" aria-expanded="false"><i data-feather="tag" class="feather-icon"></i><span class="hide-menu">Pemesanan
-                                </span></a>
+                            </span></a>
                         </li>
                         <li class="sidebar-item"> <a class="sidebar-link" href="/penggunaController" aria-expanded="false"><i data-feather="tag" class="feather-icon"></i><span class="hide-menu">Pengguna
+                            </span></a>
+                        </li>
+                        <!-- <li class="sidebar-item"> <a class="sidebar-link" href="/ukuranController" aria-expanded="false"><i data-feather="tag" class="feather-icon"></i><span class="hide-menu">Ukuran
                                 </span></a>
                         </li>
+                        <li class="sidebar-item"> <a class="sidebar-link" href="/template_produkController" aria-expanded="false"><i data-feather="tag" class="feather-icon"></i><span class="hide-menu">Template Produk
+                                </span></a>
+                        </li> -->
                         <li class="sidebar-item"> <a class="sidebar-link" href="/pages/print_laporan" aria-expanded="false"><i data-feather="tag" class="feather-icon"></i><span class="hide-menu">Laporan
                                 </span></a>
                         </li>
@@ -482,8 +489,9 @@
     <script src="/template/admin/assets/libs/moment/min/moment.min.js"></script>
     <script src="/template/admin/assets/libs/fullcalendar/dist/fullcalendar.min.js"></script>
     <script src="/template/admin/dist/js/pages/calendar/cal-init.js"></script>
-    <script src="sweetallert/dist/sweetalert2.js"></script>
-    <!-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script> -->
+    <script src="/sweetallert/dist/sweetalert2.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/carousnap/carousnap@v1.4/carousnap/carousnap.js" id="scriptCarousnap"></script>
     <script>
         <?php if (session()->getFlashdata('pesan')) : ?>
             Swal.fire({

@@ -2,13 +2,13 @@
 
 <?= $this->Section('content'); ?>
 <!-- Page info -->
-<div class="page-top-info">
-    <div class="container">
+<div class="mt-5">
+    <div class="container" >
         <h4>Keterangan Produk</h4>
-        <div class="site-pagination">
+        <!-- <div class="site-pagination">
             <a href="">Home</a> /
             <a href="">Shop</a>
-        </div>
+        </div> -->
     </div>
 </div>
 <!-- Page info end -->
@@ -17,22 +17,27 @@
 <!-- product section -->
 <section class="product-section">
     <div class="container">
-        <div class="back-link">
+        <!-- <div class="back-link">
             <a href="./category.html"> &lt;&lt; Back to Category</a>
-        </div>
+        </div> -->
         <div class="row">
             <div class="col-lg-6">
-                <div class="product-pic-zoom">
+                <!-- <div class="product-pic-zoom">
                     <img class="product-big-img" src="/gambar/<?= $produk[0]['gambar']; ?>" alt="">
-                </div>
-                <!-- <div class="product-thumbs" tabindex="1" style="overflow: hidden; outline: none;">
-                    <div class="product-thumbs-track">
-                        <div class="pt active" data-imgbigurl="img/single-product/1.jpg"><img src="img/single-product/thumb-1.jpg" alt=""></div>
-                        <div class="pt" data-imgbigurl="img/single-product/2.jpg"><img src="img/single-product/thumb-2.jpg" alt=""></div>
-                        <div class="pt" data-imgbigurl="img/single-product/3.jpg"><img src="img/single-product/thumb-3.jpg" alt=""></div>
-                        <div class="pt" data-imgbigurl="img/single-product/4.jpg"><img src="img/single-product/thumb-4.jpg" alt=""></div>
-                    </div>
                 </div> -->
+                <div class="carouSnap" data-width="600" data-height="700">
+                    <div class="numbSlide"></div>
+                    <div class="bnSlide"></div>
+                    <div class="photoCollect">
+                        <!-- YOUR IMAGES HERE (Maximum 10 Photos & Minimum 1 Photo) -->
+                        <img src="/gambar/<?= $produk[0]['gambar']; ?>" alt="#alt-image" title="#title-image" />
+                        
+                        <?php foreach ($template as $p) { ?>
+                            <img src="/template_produk/<?= $p['img']; ?>" alt="#alt-image" title="#title-image" />
+                        <?php } ?>
+                    </div>
+                    <div class="indCat"></div>
+                </div>
             </div>
             <div class="col-lg-6 product-details">
                 <h2 class="p-title"><?= $produk[0]['nama_produk']; ?></h2>
@@ -55,22 +60,22 @@
                             </select>
                         </div>
                     </div>
-                    <?php if($ukuran != null){ ?>
-                    
-                    <div class="row mt-5">
-                        <div class="form-group col-2 ">
-                            <label for="exampleFormControlSelect1">Pilih Ukuran</label>
+                    <?php if ($ukuran != null) { ?>
+
+                        <div class="row mt-5">
+                            <div class="form-group col-2 ">
+                                <label for="exampleFormControlSelect1">Pilih Ukuran</label>
+                            </div>
+                            <div class="form-group col-5">
+                                <select class="form-control ukuran" id="exampleFormControlSelect1" name="ukuran">
+                                    <?php foreach ($ukuran as $p) : ?>
+                                        <option value="<?= $p['ukuran']; ?>"><?= $p['ukuran']; ?></option>
+                                    <?php endforeach ?>
+                                    <option value="custom">custom</option>
+                                </select>
+                            </div>
+                            <div class="ukuran"></div>
                         </div>
-                        <div class="form-group col-5">
-                            <select class="form-control ukuran" id="exampleFormControlSelect1" name="ukuran">
-                                <?php foreach ($ukuran as $p) : ?>
-                                    <option value="<?= $p['ukuran']; ?>"><?= $p['ukuran']; ?></option>
-                                <?php endforeach ?>
-                                <option value="custom">custom</option>
-                            </select>
-                        </div>
-                        <div class="ukuran"></div>
-                    </div>
                     <?php } ?>
                     <div class="quantity">
                         <p>Jumlah</p>
@@ -104,11 +109,11 @@
 
 
 <!-- RELATED PRODUCTS section -->
-<div class="container mb-3">
+<!-- <div class="container mb-3">
     <div class="">
         <a data-fancybox="gallery" href="/gambar/<?= $produk[0]['gambar']; ?>"><img src="/gambar/<?= $produk[0]['gambar']; ?>" style="width: auto; height: 200px; "></a>
         <a data-fancybox="gallery" href="/gambar/<?= $produk[0]['gambar']; ?>"><img src="/gambar/<?= $produk[0]['gambar']; ?>" style="width: auto; height: 200px; "></a>
     </div>
-</div>
+</div> -->
 <!-- RELATED PRODUCTS section end -->
 <?= $this->endSection(); ?>
