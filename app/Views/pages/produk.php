@@ -104,7 +104,7 @@
 
 
 <!-- RELATED PRODUCTS section -->
-<div class="container">
+<div class="container mb-3">
     <div class="">
         <a data-fancybox="gallery" href="/gambar/<?= $produk[0]['gambar']; ?>"><img src="/gambar/<?= $produk[0]['gambar']; ?>" style="width: auto; height: 200px; "></a>
         <a data-fancybox="gallery" href="/gambar/<?= $produk[0]['gambar']; ?>"><img src="/gambar/<?= $produk[0]['gambar']; ?>" style="width: auto; height: 200px; "></a>

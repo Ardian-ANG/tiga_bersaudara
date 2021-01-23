@@ -68,13 +68,13 @@
 <!-- Product filter section -->
 <section class="product-filter-section">
     <div class="container">
-        <div class="section-title">
-            <!-- <h2>BROWSE TOP SELLING PRODUCTS</h2> -->
-        </div>
-        <ul class="product-filter-menu">
+        <ul class="product-filter-menu text-center mb-2">
+            <div class="my-5">
+                <h2>BROWSE PRODUCTS</h2>
+            </div>
             <li><a href="/pages/">All</a></li>
             <?php foreach ($kategori as $p) : ?>
-                <li><a href="/pages/cari/<?= $p['id_kategori']; ?>"><?= $p['kategori']; ?></a></li>
+                <li><a href="/pages/index/<?= $p['id_kategori']; ?>"><?= $p['kategori']; ?></a></li>
             <?php endforeach; ?>
         </ul>
         <div class="row">
@@ -83,22 +83,24 @@
                 echo "Produk Belum Tersedia";
             } ?>
             <?php foreach ($produk as $p) : ?>
-                <div class="col-lg-3 col-sm-6">
+                <div class="col-lg-3 col-sm-6 mb-3">
                     <div class="product-item">
-                        <div class="pi-pic">
-                            <img src="/gambar/<?= $p['gambar']; ?>" alt="">
+                        <a href="/pages/produk/<?= $p['id_produk']; ?>" class="link">
+                        <div class="">
+                            <img src="/gambar/<?= $p['gambar']; ?>" alt="" class="gambar">
                         </div>
-                        <div class="pi-text">
-                            <!-- <h6>Rp. <?= $produk[0]['harga']; ?></h6> -->
-                            <a href="/pages/produk/<?= $p['id_produk']; ?>" class="card-link"><?= $p['nama_produk']; ?></a>
-
+                        <div class="pi-text text-center">
+                            <p><?= $p['nama_produk']; ?></p>
+                            <p>Rp. <?= $p['harga']; ?></p>
                         </div>
+                    </a>
                     </div>
                 </div>
             <?php endforeach; ?>
         </div>
-        <div class="text-center pt-5">
+        <!-- <div class="text-center pt-1">
             <button class="site-btn sb-line sb-dark">LOAD MORE</button>
-        </div>
+            
+        </div> -->
 </section>
 <?= $this->endSection(); ?>

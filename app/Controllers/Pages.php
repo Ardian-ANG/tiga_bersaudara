@@ -29,11 +29,16 @@ class Pages extends BaseController
         $this->session = session();
     }
 
-    public function index()
+    public function index($kategori = null)
     {
+        if($kategori){
+            $produk = $this->Produk->where('id_kategori', $kategori)->find();
+        }else{
+            $produk = $this->Produk->findAll(8);
+        }
         $data = [
             'title' => 'Tiga Bersaudara',
-            'produk' => $this->Produk->getProduk(),
+            'produk' => $produk,
             'kategori' => $this->Kategori->findAll(),
             'session' => $this->session->get('role')
 
@@ -42,18 +47,18 @@ class Pages extends BaseController
     }
 
 
-    public function cari($Kategori)
-    {
-        $data = [
-            'title' => 'Tiga Bersaudara',
-            'produk' => $this->Produk->where('id_kategori', $Kategori)->find(),
-            'kategori' => $this->Kategori->findAll(),
-            'session' => $this->session->get('role')
+    // public function cari($Kategori)
+    // {
+    //     $data = [
+    //         'title' => 'Tiga Bersaudara',
+    //         'produk' => $this->Produk->where('id_kategori', $Kategori)->find(),
+    //         'kategori' => $this->Kategori->findAll(),
+    //         'session' => $this->session->get('role')
 
-        ];
-        // dd($data);
-        return view('pages/home', $data);
-    }
+    //     ];
+    //     // dd($data);
+    //     return view('pages/home', $data);
+    // }
 
 
     public function produk($id_produk)
@@ -118,6 +123,11 @@ class Pages extends BaseController
     }
     public function shopNow()
     {
+        // dd(date("Y/m/d"));
+        if(empty($this->session->get('role'))){
+            return redirect()->to('/pages/login');
+        }
+
         // ambil gambar
         $fileGambar = $this->request->getFile('desain');
         // apakah tidak ada gambar yang diupload
@@ -156,7 +166,7 @@ class Pages extends BaseController
             }
             // $ket_pemesanan = $ukuran . '/' . $harga . ' * ' . $this->request->getVar('jumlah') . ' (jumlah) = ' . $harga * $this->request->getVar('jumlah') . " " . $this->request->getVar('deskripsi');
             $jumlah = $harga * $this->request->getVar('jumlah');
-            $ket_pemesanan = $harga . " x " . $this->request->getVar('jumlah') . "= " . $jumlah . " - " . $this->request->getVar('deskripsi');
+            $ket_pemesanan = $harga . " x " . $this->request->getVar('jumlah') . "= " . $jumlah . " - " . "Ukuran = " . $ukuran . " - " . $this->request->getVar('deskripsi');
         } else {
             $pemesanan = $this->Produk->find($this->request->getVar('id_produk'));
             // dd($pemesanan['harga'], $this->request->getVar('id_produk'));

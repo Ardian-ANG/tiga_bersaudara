@@ -13,7 +13,7 @@
     <link href="/template/img/tb.png" rel="shortcut icon" />
 
     <!-- Google Font -->
-    <link href="/template/https://fonts.googleapis.com/css?family=Josefin+Sans:300,300i,400,400i,700,700i" rel="stylesheet">
+    <!-- <link href="/template/https://fonts.googleapis.com/css?family=Josefin+Sans:300,300i,400,400i,700,700i" rel="stylesheet"> -->
 
 
     <!-- Stylesheets -->
@@ -86,14 +86,13 @@
                             <div class="col-lg-3 col-sm-6">
                                 <div class="footer-widget about-widget">
                                     <h2>Alamat</h2>
-                                    <p>Jl. Ahmad Yani,Lekong Dendek Dasan Tereng, Narmada. Kab. Lombok Barat, Nusa Tenggara Barat</p>
+                                    <p class="text-white"><strong>Jl. Ahmad Yani,Lekong Dendek Dasan Tereng, Narmada. Kab. Lombok Barat, Nusa Tenggara Barat</strong></p>
                                 </div>
                             </div>
                             <div class="col-lg-3 col-sm-6">
                                 <div class="footer-widget about-widget">
-                                    <h2>Kontak Kami</h2>
-                                    <P>Email : syamsulaufa78@gmail.com</P>
-                                    <p>Telp/WA : +62878-5677-8689</p>
+                                    <h2 class="text-white">Kontak Kami</h2>
+                                    <P class="text-white"><strong>Email : syamsulaufa78@gmail.com <br><a href="https://wa.link/w3que3" class="wa">Telp/WA : +62878-5677-8689</a></strong></P>
                                 </div>
                             </div>
                         </div>

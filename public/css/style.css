@@ -1,5 +1,6 @@
 .gambar {
-  width: 100px;
+  width: auto !important;
+  height: 210px !important;
   margin-left: auto;
   margin-right: auto;
   display: block;
@@ -7,4 +8,28 @@
 
 .table > tbody > tr > * {
   vertical-align: middle;
+}
+
+a .link:link {
+  color: rgb(0, 0, 0);
+  background-color: transparent;
+  text-decoration: none;
+}
+
+a .link:visited {
+  color: rgb(0, 0, 0);
+  background-color: transparent;
+  text-decoration: none;
+}
+
+a .link:hover {
+  color: rgb(0, 0, 0);
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+a .link:active {
+  color: rgb(0, 0, 0);
+  background-color: transparent;
+  text-decoration: underline;
 }
