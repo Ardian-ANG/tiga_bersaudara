@@ -86,7 +86,7 @@
                         <div class="form-group col-2">
                             <label for="exampleFormControlFile1">Upload Desain</label>
                         </div>
-                        <div class="form-group col-2">
+                        <div class="form-group col-8">
                             <input type="file" class="form-control-file" id="exampleFormControlFile1" name="desain">
                         </div>
                     </div>

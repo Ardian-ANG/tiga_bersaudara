@@ -29,13 +29,13 @@
                                 <?= session()->getFlashdata('pesan'); ?>
                             </div>
                         <?php endif; ?>
-                        <form action="/penggunaController/save" method="POST" class="register-form" id="register-form">
+                        <form action="/penggunaController/save" method="POST" class="register-form" id="register-form" enctype="multipart/form-data">
                             <?= csrf_field(); ?>
 
                             <div class="form-group row">
                                 <label for="nama_lengkap" class="zmdi zmdi-account material-icons-name"></label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="nama_lengkap" name="nama_lengkap" placeholder="Nama Lengkap">
+                                    <input type="text" class="form-control <?= ($validation->hasError('nama_lengkap')) ? 'is-invalid' : ''; ?>" id="nama_lengkap" name="nama_lengkap" placeholder="Nama Lengkap" >
                                     <div class="invalid-feedback">
                                         <?= $validation->getError("nama_lengkap"); ?>
                                     </div>

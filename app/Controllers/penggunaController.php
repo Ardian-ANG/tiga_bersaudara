@@ -41,6 +41,43 @@ class penggunaController extends BaseController
             session()->setflashdata("pesan", "password tidak sama");
             return redirect()->to('/pages/register');
         }
+        if (!$this->validate([
+            'nama_lengkap' => [
+                'rules' => 'required|is_unique[pengguna.nama_lengkap]',
+                'errors' => [
+                    'required' => 'nama harus diisi.',
+                    'is_unique' => 'nama sudah ada'
+                ]
+            ],
+            'email' => [
+                'rules' => 'required[pengguna.email]',
+                'errors' => [
+                    'required' => 'email harus diisi.'
+                ]
+            ],
+            'password' => [
+                'rules' => 'required|min_length[5]',
+                'errors' => [
+                    'required' => 'password kurang dari 5'
+                ]
+
+            ],
+            'no_hp' => [
+                'rules' => 'required[pengguna.no_hp]',
+                'errors' => [
+                    'required' => 'nomor harus diisi.'
+                ]
+            ],
+            'no_wa' => [
+                'rules' => 'required[pengguna.no_wa]',
+                'errors' => [
+                    'required' => 'nomor harus diisi.'
+                ]
+            ],
+        ])) {
+            return redirect()->to('/pages/register')->withInput();
+        }
+
         $this->pengguna->save([
             "nama_lengkap" => $this->request->getVar("nama_lengkap"),
             "email" => $this->request->getVar("email"),

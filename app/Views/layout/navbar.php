@@ -9,11 +9,13 @@
     <li><a href="#">Kebutuhan Promosi</a>
         <ul class="sub-menu">
         <li><a href="/pages/produk/96">Kartu Nama</a></li>
+        <li><a href="/pages/produk/113">Id Card</a></li>
         </ul>
     </li>
     <li><a href="#">Suvenir</a>
         <ul class="sub-menu">
             <li><a href="/pages/produk/95">Mug</a></li>
+            <li><a href="/pages/produk/112">Pin</a></li>
         </ul>
     </li>
     <li><a href="#">Textile</a>

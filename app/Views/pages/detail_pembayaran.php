@@ -30,7 +30,8 @@
                 <p><?= $pemesanan[0]['ket_pemesanan']; ?></p>
                 <p>Status Pemesanan : <?= $pemesanan[0]['status_pemesanan']; ?></p>
                 <p>Total Harga : Rp. <?= $explode[3]; ?> </p>
-                <p>Total Transfer : Rp. <?= $explode[3] / 2; ?> </p>
+                <p>Pelanggan Harus Membayar Uang Muka (DP) Minimal 50% Terlebih Dahulu Agar Produknya Dapat Dibuat</p>
+                <p>Uang Muka(DP) : Rp. <?= $explode[3] / 2; ?> </p>
 
 
                 <form action="/pages/upload_bukti/<?= $pemesanan[0]['id']; ?>" method="post" enctype="multipart/form-data">
@@ -38,7 +39,7 @@
                         <div class="form-group col-2">
                             <label for="exampleFormControlFile1">Upload Bukti Transfer</label>
                         </div>
-                        <div class="form-group col-2">
+                        <div class="form-group col-8">
                             <input required type="file" class="form-control-file" id="exampleFormControlFile1" name="bukti">
                         </div>
                     </div>

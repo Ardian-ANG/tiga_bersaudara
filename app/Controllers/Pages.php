@@ -273,6 +273,17 @@ class Pages extends BaseController
                 echo "Email atau Password SALAH...!!!";
             }
         }
+
+        // if (!$this->validate([
+        //     'email' => [
+        //         'rules' => 'required[pengguna.email]',
+        //         'errors' => [
+        //             'required' => 'email harus diisi.',
+        //         ]
+        //     ],
+        // ])) {
+        //     return redirect()->to('/pages/login');
+        // }
     }
 
     public function logout()
