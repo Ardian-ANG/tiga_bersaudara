@@ -19,7 +19,7 @@
 
     <!-- My css -->
     <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/carousnap/carousnap@v1.4/carousnap/carousnap.css" type="text/css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/carousnap/carousnap@v1.4/carousnap/carousnap.css" type="text/css" />
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -251,10 +251,10 @@
                                 </span></a>
                         </li>
                         <li class="sidebar-item"> <a class="sidebar-link" href="/pemesanan" aria-expanded="false"><i data-feather="tag" class="feather-icon"></i><span class="hide-menu">Pemesanan
-                            </span></a>
+                                </span></a>
                         </li>
                         <li class="sidebar-item"> <a class="sidebar-link" href="/penggunaController" aria-expanded="false"><i data-feather="tag" class="feather-icon"></i><span class="hide-menu">Pengguna
-                            </span></a>
+                                </span></a>
                         </li>
                         <!-- <li class="sidebar-item"> <a class="sidebar-link" href="/ukuranController" aria-expanded="false"><i data-feather="tag" class="feather-icon"></i><span class="hide-menu">Ukuran
                                 </span></a>
@@ -262,7 +262,7 @@
                         <li class="sidebar-item"> <a class="sidebar-link" href="/template_produkController" aria-expanded="false"><i data-feather="tag" class="feather-icon"></i><span class="hide-menu">Template Produk
                                 </span></a>
                         </li> -->
-                        <li class="sidebar-item"> <a class="sidebar-link" href="/pages/print_laporan" aria-expanded="false"><i data-feather="tag" class="feather-icon"></i><span class="hide-menu">Laporan
+                        <li class="sidebar-item"> <a class="sidebar-link" href="/pages/print_laporan" aria-expanded="false"><i data-feather="tag" class="feather-icon"></i><span class="hide-menu">Laporan Penjualan
                                 </span></a>
                         </li>
                         <!-- <li class="list-divider"></li> -->

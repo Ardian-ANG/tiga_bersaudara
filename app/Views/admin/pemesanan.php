@@ -13,8 +13,9 @@
                             <tr>
                                 <th scope="col">No</th>
                                 <th scope="col" class="text-center">Pemesanan</th>
-                                <th scope="col" class="text-center">Desail</th>
+                                <th scope="col" class="text-center">Desain</th>
                                 <th scope="col" class="text-center">Deskripsi</th>
+                                <th scope="col" class="text-center">Biaya Tambahan</th>
                                 <th scope="col" class="text-center">Pembayaran</th>
                                 <th scope="col" class="text-center">Status Pemesanan</th>
                                 <th scope="col" class="text-center">Status Pembayaran</th>
@@ -32,6 +33,7 @@
                                     <td><?= $p['nama_lengkap'] . '(' . $p['id'] . ') / ' . $p['nama_produk']; ?></td>
                                     <td><?= $p['desain']; ?></td>
                                     <td><?= $p['ket_pemesanan']; ?></td>
+                                    <td><?= $p['biaya_tambahan']; ?></td>
                                     <td><?= $p['pembayaran']; ?></td>
                                     <td><?= $p['status_pemesanan']; ?></td>
                                     <td><?= $p['status_pembayaran']; ?></td>

@@ -1,0 +1,23 @@
+{
+  "name": "tiga_bersaudara",
+  "version": "1.0.0",
+  "description": "APlikasi skripsi",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "start": "php spark serve",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/noobie27/tiga_bersaudara.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/noobie27/tiga_bersaudara/issues"
+  },
+  "homepage": "https://github.com/noobie27/tiga_bersaudara#readme"
+}

@@ -6,7 +6,6 @@
     <div class="container">
         <h4>Detail Pembayaran</h4>
         <div class="site-pagination">
-            <h4><?= $pemesanan[0]['nama_produk']; ?></h4>
         </div>
     </div>
 </div>
@@ -26,12 +25,14 @@
                 <p>Hubungi : +62878-5677-8689</p>
                 <h4>Info Produk</h4>
                 <p></p>
+                <h4><?= $pemesanan[0]['nama_produk']; ?></h4>
                 <?php $explode = explode(" ", $pemesanan[0]['ket_pemesanan']); ?>
-                <p><?= $pemesanan[0]['ket_pemesanan']; ?></p>
-                <p>Status Pemesanan : <?= $pemesanan[0]['status_pemesanan']; ?></p>
+                <p>Keterangan : <?= $pemesanan[0]['ket_pemesanan']; ?></p>
                 <p>Total Harga : Rp. <?= $explode[3]; ?> </p>
+                <p>Dikenakan Biaya Tambahan : <?= $pemesanan[0]['biaya_tambahan']; ?></p>
+                <p>Status Pemesanan : <?= $pemesanan[0]['status_pemesanan']; ?></p>
                 <p>Pelanggan Harus Membayar Uang Muka (DP) Minimal 50% Terlebih Dahulu Agar Produknya Dapat Dibuat</p>
-                <p>Uang Muka(DP) : Rp. <?= $explode[3] / 2; ?> </p>
+                <p>Uang Muka(DP) : Rp. <?= ($explode[3] + $pemesanan[0]['biaya_tambahan']) / 2; ?> </p>
 
 
                 <form action="/pages/upload_bukti/<?= $pemesanan[0]['id']; ?>" method="post" enctype="multipart/form-data">
@@ -46,9 +47,9 @@
                     <button type="submit" class="btn btn-primary mr-4 mb-2">upload</button>
 
                 </form>
-                    <a href="/pages/keranjang">
-                        <button class="btn btn-info">Keranjang</button>
-                    </a>
+                <a href="/pages/keranjang">
+                    <button class="btn btn-info">Keranjang</button>
+                </a>
             </div>
         </div>
     </div>

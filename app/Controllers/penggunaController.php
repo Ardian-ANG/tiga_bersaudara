@@ -77,7 +77,7 @@ class penggunaController extends BaseController
         ])) {
             return redirect()->to('/pages/register')->withInput();
         }
-
+        // dd($this->request->getVar());
         $this->pengguna->save([
             "nama_lengkap" => $this->request->getVar("nama_lengkap"),
             "email" => $this->request->getVar("email"),

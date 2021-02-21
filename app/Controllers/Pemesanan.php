@@ -40,18 +40,27 @@ class Pemesanan extends BaseController
 
     public function edit($id)
     {
-
+        $pemesanan = $this->Pemesanan->find($id);
         $data = [
             'title' => 'Form Ubah Data Pesanan',
             'validation' => \Config\Services::validation(),
-            'pemesanan' => $this->Pemesanan->find($id)
+            'nama_produk' => $this->Produk->find($pemesanan['id_produk']),
+            'pemesanan' => $pemesanan
         ];
+        // dd($data);
         return view('admin/ubah_pemesanan', $data);
     }
 
     public function update($id)
     {
         if (!$this->validate([
+            'biaya_tambahan' => [
+                'rules' => 'required[pemesanan.biaya_tambahan]',
+                'errors' => [
+                    'required' => 'harus diisi.',
+
+                ]
+            ],
             'status_pemesanan' => [
                 'rules' => 'required[pemesanan.status_pemesanan]',
                 'errors' => [
@@ -70,26 +79,18 @@ class Pemesanan extends BaseController
             $validation = \Config\Services::validation();
             return redirect()->to('/pemesanan/edit/' . $id)->withInput()->with('validation', $validation);
         }
-
+        // dd($this->request->getVar());
         $db      = \Config\Database::connect();
         $builder = $db->table('Pemesanan');
-        // $query   = $builder->get();
-        // dd($query->getResult());
-
-        // $builder->set('name', $name);
-        // $builder->set('title', $title);
-        // $builder->set('status', $status);
-        // $builder->insert();
         $data = [
+            'biaya_tambahan' => $this->request->getVar('biaya_tambahan'),
             'status_pemesanan' => $this->request->getVar('status_pemesanan'),
             'status_pembayaran' => $this->request->getVar('status_pembayaran')
         ];
         $builder->set($data);
         $builder->where('id', $id);
         $builder->update();
-        // $this->Produk->save($data);
         session()->setflashdata('pesan', 'Pemesanan berhasil diubah.');
-
 
         return redirect()->to('/pemesanan');
     }

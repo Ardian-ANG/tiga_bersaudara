@@ -11,9 +11,18 @@
                 <div class="form-group row">
                     <label for="id" class="col-sm-2 ml-4 col-form-label">Pemesanan</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control <?= ($validation->hasError('id')) ? 'is-invalid' : ''; ?>" id="id" name="id" autofocus value="<?= (old('id')) ? old('id') : $pemesanan['id'] ?>">
+                        <input type="text" class="form-control <?= ($validation->hasError('id')) ? 'is-invalid' : ''; ?>" id="id" name="id" autofocus value="<?= (old('id')) ? old('id') : $nama_produk['nama_produk'] ?>">
                         <div class="invalid-feedback">
                             <?= $validation->getError('id'); ?>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="id" class="col-sm-2 ml-4 col-form-label">Biaya Tambahan</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control <?= ($validation->hasError('biaya_tambahan')) ? 'is-invalid' : ''; ?>" id="biaya_tambahan" name="biaya_tambahan" autofocus value="<?= (old('biaya_tambahan')) ? old('biaya_tambahan') : $pemesanan['biaya_tambahan'] ?>">
+                        <div class="invalid-feedback">
+                            <?= $validation->getError('biaya_tambahan'); ?>
                         </div>
                     </div>
                 </div>

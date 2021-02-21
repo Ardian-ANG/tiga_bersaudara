@@ -43,7 +43,7 @@
                     <th>Tanggal</th>
                     <th>Pelanggan</th>
                     <th>Nama Produk</th>
-                    <th>Debet</th>
+                    <th>Harga</th>
                 </tr>
             </thead>
             <tbody>
@@ -54,9 +54,22 @@
                         <td align=center><?= $p['tgl']; ?></td>
                         <td align=center><?= $p['nama_lengkap']; ?></td>
                         <td align=center><?= $p['nama_produk']; ?></td>
-                        <td align=center><?php $explode = explode(" ", $p['ket_pemesanan']); ?>Rp. <?= $explode[3]; ?></td>
+                        <td align=center><?php $explode = explode(" ", $p['ket_pemesanan']); ?>Rp. <?= $explode[3] + $p['biaya_tambahan']; ?></td>
                     </tr>
                 <?php endforeach; ?>
+                <tr>
+                    <td colspan="4" class="text-center">
+                        <p>Total harga dari <?= $i - 1 ; ?> produk</p>
+                    </td>
+                    <td colspan="1" class="text-center">
+                        <?php $total = 0;
+                        foreach ($produk as $p) : ?>
+                            <?php $explode = explode(" ", $p['ket_pemesanan']); ?>
+                            <?php $total += $explode[3] + $p['biaya_tambahan']; ?>
+                        <?php endforeach; ?>
+                        <?= "RP. " . $total;; ?>
+                    </td>
+                </tr>
             </tbody>
         </table>
     </div>

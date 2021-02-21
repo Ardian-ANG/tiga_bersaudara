@@ -7,7 +7,7 @@ use Codeigniter\Model;
 class PemesananModel extends Model
 {
     protected $table      = 'pemesanan';
-    protected $allowedFields = ['id_user', 'id_produk', 'desain', 'ket_pemesanan', 'pembayaran', 'status_pemesanan', 'status_pembayaran', 'bukti_pembayaran', 'tgl'];
+    protected $allowedFields = ['id_user', 'id_produk', 'desain', 'ket_pemesanan', 'biaya_tambahan', 'pembayaran', 'status_pemesanan', 'status_pembayaran', 'bukti_pembayaran', 'tgl'];
 
 
     public function pemesananUser()

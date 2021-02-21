@@ -104,9 +104,9 @@
                 <div class="form-group row">
                     <label for="harga" class="col-sm-2 ml-4 col-form-label">harga</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control <?= ($validation->hasError("harga")) ? "is-invalid" : ""; ?>" id="harga" name="harga" value="<?= old("harga"); ?>">
+                        <input type="text" class="form-control <?= ($validation->hasError("harga_ukuran")) ? "is-invalid" : ""; ?>" id="harga_ukuran" name="harga_ukuran" value="<?= old("harga_ukuran"); ?>">
                         <div class="invalid-feedback">
-                            <?= $validation->getError("harga"); ?>
+                            <?= $validation->getError("harga_ukuran"); ?>
                         </div>
                     </div>
                 </div>

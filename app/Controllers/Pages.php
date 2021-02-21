@@ -184,6 +184,7 @@ class Pages extends BaseController
             'id_produk' => $this->request->getVar('id_produk'),
             'desain' => $namaGambar,
             'ket_pemesanan' => $ket_pemesanan,
+            'biaya_tambahan' => 0,
             'pembayaran' => $this->request->getVar('pembayaran'),
             'status_pemesanan' => 'Dalam Antrian',
             'status_pembayaran' => 'Belum Dibayar',

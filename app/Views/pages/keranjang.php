@@ -16,6 +16,7 @@
                                     <th scope="col" class="text-center">Pemesanan</th>
                                     <th scope="col" class="text-center">Desain</th>
                                     <th scope="col" class="text-center">Deskripsi</th>
+                                    <th scope="col" class="text-center">Biaya Tambahan</th>
                                     <th scope="col" class="text-center">Pembayaran</th>
                                     <th scope="col" class="text-center">Status Pemesanan</th>
                                     <th scope="col" class="text-center">Status Pembayaran</th>
@@ -36,6 +37,7 @@
                                             <td></td>
                                         <?php } ?>
                                         <td><?= $p['ket_pemesanan']; ?></td>
+                                        <td><?= $p['biaya_tambahan']; ?></td>
                                         <td><?= $p['pembayaran']; ?></td>
                                         <td><?= $p['status_pemesanan']; ?></td>
                                         <td><?= $p['status_pembayaran']; ?></td>
@@ -54,6 +56,25 @@
                                             </a>
                                     </tr>
                                 <?php endforeach; ?>
+
+                                <tr>
+                                    <td colspan="8" class="text-center">
+                                        <p>Total Pembayaran dari <?= $i - 1; ?> produk</p>
+                                    </td>
+                                    <td colspan="1">
+                                        <?php $total = 0;
+                                        foreach ($pemesanan as $p) : ?>
+                                            <?php $explode = explode(" ", $p['ket_pemesanan']); ?>
+                                            <?php $total += $explode[3] + $p['biaya_tambahan']; ?>
+                                        <?php endforeach; ?>
+                                        <?= "RP. " . $total;; ?>
+                                    </td>
+                                    <td colspan="2"></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="11"></td>
+                                </tr>
+
                             </tbody>
                         </table>
                     </div>
